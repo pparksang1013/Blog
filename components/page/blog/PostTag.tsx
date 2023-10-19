@@ -1,3 +1,5 @@
+import style from "./blog.module.css";
+
 interface tagType {
     tag: string;
 }
@@ -10,9 +12,13 @@ function PostTag(props: tagType) {
 
     const sortTag = () => {
         if (tag === "react") {
+            tagColorBox = style.react_box;
+            tagCircle = style.react_circle;
+
             return (
-                <div>
-                    <p>react</p>
+                <div className={`${style.tag_box} ${tagColorBox}`}>
+                    <p className={`${style.circle} ${tagCircle}`}></p>
+                    <p className={style.tag_text}>react</p>
                 </div>
             );
         }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PostTag from "./PostTag";
 
 // 💅CSS
 import style from "./blog.module.css";
@@ -18,6 +19,8 @@ function GetPostContent(props: postingProps) {
 
     return (
         <div className={style.posting}>
+            <PostTag tag={tag} />
+
             <div className={style.posting_contents}>
                 <Link href={`blog/${postingPath}`}>
                     <h2 className={style.posting_title}>{title}</h2>

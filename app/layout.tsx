@@ -1,4 +1,5 @@
 import "@/style/globals.css";
+import Fonts from "@/components/Font";
 
 export const metadata = {
     title: "Create Next App",
@@ -8,6 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="ko">
+            <Fonts />
             <body>{children}</body>
         </html>
     );

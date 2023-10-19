@@ -6,3 +6,35 @@
     justify-content: space-between;
     gap: 20px;
 }
+
+/* 👀 GetPostContent css */
+.posting {
+    width: calc(1400px / 3 - 20px);
+    height: 300px;
+    min-height: 200px;
+    background-color: #ffffff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #0000001b;
+    border-radius: 20px;
+}
+
+.posting .posting_contents {
+    height: 100%;
+    margin-top: 12px;
+    position: relative;
+}
+
+.posting .posting_contents .posting_title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1.3;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+}
+
+.posting_title:hover {
+    color: rgb(var(--orange));
+}

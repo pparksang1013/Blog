@@ -1,6 +1,9 @@
 import { allPosts, Post } from "@/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
+// 💅CSS
+import style from "./posting.module.css";
+
 export function generateStaticParams() {
     const staticPath = allPosts.map((post: Post) => {
         return post._raw.flattenedPath;
@@ -18,8 +21,8 @@ function BlogPosting({ params }: { params: { slug: string } }) {
     const MDXComponet = useMDXComponent(findPath.body.code);
 
     return (
-        <div>
-            <h1>{findPath.title}</h1>
+        <div className={style.wrapper}>
+            <h1 className={style.title}>{findPath.title}</h1>
             <MDXComponet />
         </div>
     );

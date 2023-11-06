@@ -27,12 +27,11 @@ function GetPostContent(props: postingProps) {
             <div className={style.posting_contents}>
                 <PostTag tag={tag} />
 
-                <div className="link_box">
-                    <Link href={`blog/${postingPath}`}>
-                        <h2 className={style.posting_title}>{title}</h2>
-                    </Link>
-                    <div className="summary">{summary}</div>
-                </div>
+                <Link href={`blog/${postingPath}`}>
+                    <h2 className={style.posting_title}>{title}</h2>
+                </Link>
+
+                <div className="summary">{summary}</div>
             </div>
         </div>
     );

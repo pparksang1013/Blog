@@ -8,12 +8,12 @@ interface postingProps {
     tag: string;
     title: string;
     path: string;
-    date: string;
     summary: string;
+    thumnail: string;
 }
 
 function GetPostContent(props: postingProps) {
-    const { tag, title, path, date, summary } = props;
+    const { tag, title, path, summary, thumnail } = props;
 
     const postingPath = path.replace(".mdx", "");
 

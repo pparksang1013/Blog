@@ -18,8 +18,8 @@ function Blog() {
                         tag={ele.tag}
                         title={ele.title}
                         path={ele._raw.sourceFileName}
-                        date={ele.date}
                         summary={ele.summary}
+                        thumnail={ele.thumnail!}
                         key={i}
                     />
                 );

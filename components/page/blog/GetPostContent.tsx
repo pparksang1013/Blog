@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PostTag from "./PostTag";
+import Image from "next/image";
 
 // 💅CSS
 import style from "./blog.module.css";
@@ -19,12 +20,19 @@ function GetPostContent(props: postingProps) {
 
     return (
         <div className={style.posting}>
-            <PostTag tag={tag} />
+            <div className={style.image_box}>
+                <Image src={thumnail} alt="posting" layout="fill" />
+            </div>
 
             <div className={style.posting_contents}>
-                <Link href={`blog/${postingPath}`}>
-                    <h2 className={style.posting_title}>{title}</h2>
-                </Link>
+                <PostTag tag={tag} />
+
+                <div className="link_box">
+                    <Link href={`blog/${postingPath}`}>
+                        <h2 className={style.posting_title}>{title}</h2>
+                    </Link>
+                    <div className="summary">{summary}</div>
+                </div>
             </div>
         </div>
     );

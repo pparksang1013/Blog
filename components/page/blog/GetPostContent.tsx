@@ -31,7 +31,7 @@ function GetPostContent(props: postingProps) {
                     <h2 className={style.posting_title}>{title}</h2>
                 </Link>
 
-                <div className="summary">{summary}</div>
+                <div className={style.summary}>{summary}</div>
             </div>
         </div>
     );

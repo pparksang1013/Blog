@@ -28,7 +28,7 @@ function GetPostContent(props: postingProps) {
                 <PostTag tag={tag} />
 
                 <Link href={`blog/${postingPath}`}>
-                    <h2 className={style.posting_title}>{title}</h2>
+                    <h1 className={style.posting_title}>{title}</h1>
                 </Link>
 
                 <div className={style.summary}>{summary}</div>

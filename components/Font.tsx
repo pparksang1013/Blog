@@ -2,6 +2,7 @@
 
 import { mona } from "../lib/font";
 import { line } from "../lib/font";
+import { proggy } from "../lib/font";
 
 export default function Fonts() {
     return (
@@ -10,6 +11,7 @@ export default function Fonts() {
                 :root {
                     --font-mona: ${mona.style.fontFamily};
                     --font-line: ${line.style.fontFamily};
+                    --font-proggy: ${proggy.style.fontFamily};
                 }
             `}</style>
         </>

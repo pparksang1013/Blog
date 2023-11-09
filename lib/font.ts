@@ -35,3 +35,13 @@ export const line = localFont({
         },
     ],
 });
+
+export const proggy = localFont({
+    variable: "--font-proggy",
+    src: [
+        {
+            path: "../asset/font/ProggySquare.ttf",
+            weight: "400",
+        },
+    ],
+});

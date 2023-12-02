@@ -1,34 +1,34 @@
 import Link from "next/link";
-import PostTag from "./PostTag";
+import Tag from "../../Tag";
 import Image from "next/image";
 
 // 💅CSS
 import style from "./blog.module.css";
 
-interface postingProps {
+interface blogProps {
     tag: string;
     title: string;
     path: string;
     summary: string;
-    thumnail: string;
+    thumbnail: string;
 }
 
-function GetPostContent(props: postingProps) {
-    const { tag, title, path, summary, thumnail } = props;
+function GetPostContent(props: blogProps) {
+    const { tag, title, path, summary, thumbnail } = props;
 
-    const postingPath = path.replace(".mdx", "");
+    const blogPath = path.replace(".mdx", "");
 
     return (
-        <div className={style.posting}>
+        <div className={style.blog}>
             <div className={style.image_box}>
-                <Image src={thumnail} alt="posting" layout="fill" />
+                <Image src={thumbnail} alt="posting" layout="fill" />
             </div>
 
-            <div className={style.posting_contents}>
-                <PostTag tag={tag} />
+            <div className={style.blog_contents}>
+                <Tag tag={tag} />
 
-                <Link href={`blog/${postingPath}`}>
-                    <h1 className={style.posting_title}>{title}</h1>
+                <Link href={`blog/${blogPath}`}>
+                    <h1 className={style.blog_title}>{title}</h1>
                 </Link>
 
                 <div className={style.summary}>{summary}</div>

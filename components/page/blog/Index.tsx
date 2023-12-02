@@ -19,7 +19,7 @@ function Blog() {
                         title={ele.title}
                         path={ele._raw.sourceFileName}
                         summary={ele.summary}
-                        thumnail={ele.thumnail!}
+                        thumbnail={ele.thumbnail!}
                         key={i}
                     />
                 );

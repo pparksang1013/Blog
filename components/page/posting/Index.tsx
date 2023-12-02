@@ -1,6 +1,7 @@
 import { allPosts, Post } from "@/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import CustomMDX from "./CustomMDX";
+import Tag from "../../Tag";
 
 // 💅CSS
 import style from "./posting.module.css";
@@ -24,6 +25,7 @@ function BlogPosting({ params }: { params: { slug: string } }) {
     return (
         <div className={style.wrapper}>
             <h1 className={style.title}>{findPath.title}</h1>
+            <Tag tag={findPath.tag} />
             <MDXComponet components={CustomMDX} />
         </div>
     );

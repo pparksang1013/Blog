@@ -1,10 +1,10 @@
-import "/style/tag.css";
+import "../style/tag.css";
 
 interface tagType {
     tag: string;
 }
 
-function PostTag(props: tagType) {
+function Tag(props: tagType) {
     const { tag } = props;
 
     return (
@@ -15,4 +15,4 @@ function PostTag(props: tagType) {
     );
 }
 
-export default PostTag;
+export default Tag;

@@ -7,7 +7,7 @@
 }
 
 /* 👀 GetPostContent css */
-.posting {
+.blog {
     width: calc(1500px / 3 - 10px);
     height: fit-content;
     background-color: #ffffff;
@@ -17,11 +17,11 @@
     margin: 0 14px 14px 0;
 }
 
-.posting:nth-child(3n) {
+.blog:nth-child(3n) {
     margin: 0;
 }
 
-.posting .image_box {
+.blog .image_box {
     width: 100%;
     height: 300px;
     min-height: 300px;
@@ -30,24 +30,26 @@
     position: relative;
 }
 
-.posting .posting_contents {
+.blog .blog_contents {
     position: relative;
     padding: 10px 20px 20px;
 }
 
-.posting .posting_contents a .posting_title {
-    margin-top: 6px;
+.blog .blog_contents a .blog_title {
     font-size: 1.6rem;
     font-weight: 900;
     line-height: 1.3;
     word-spacing: 2px;
     word-wrap: break-word;
+    margin-top: 1rem;
+    transition: color 0.25s;
 }
 
-.posting .posting_contents .summary {
+.blog .blog_contents .summary {
+    margin-top: 0.2rem;
     font-size: 0.88rem;
 }
 
-.posting .posting_contents:hover a .posting_title {
+.blog .blog_contents:hover a .blog_title {
     color: var(--green);
 }

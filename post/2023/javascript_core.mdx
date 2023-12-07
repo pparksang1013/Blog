@@ -1,0 +1,288 @@
+---
+title: "자바스크립트 핵심개념"
+summary: "this 공부하다가 정리해본 자바스크립트 핵심개념"
+date: "2023-11-24"
+tag: "javascript"
+thumbnail: "/img/post/2023/javascript_core/js_core_thumbnail.jpg"
+---
+
+<MainCate>
+
+    <MainCateBox>
+
+        ## 실행 컨텍스트
+
+        <MarginBox>
+
+            실행 컨텍스트(Execution Context)는 현재 실행되고 있는 코드 단위를 관리하는 범위로, 코드의 실행 순서, 변수의 범위(scope),
+            this 바인딩 등을 결정합니다.
+
+        </MarginBox>
+
+    </MainCateBox>
+
+    <SubCate>
+
+        <SubCateBox>
+
+            <h3 className="sub_cate_title">실행 컨텍스트 구성</h3>
+
+            <SubContents>
+
+                <MarginBox>
+
+                1. #### Variable Object
+
+                     var로 선언된 변수와, 함수 선언식으로 선언된 함수를 위한 Environment Record를 제공.
+
+                2. #### Lexical Environment
+
+                    let, const로 선언된 변수와, 함수 표현식으로 선언된 함수를 위한 Environment Record를 제공.
+
+                3. #### This binding
+
+                    this 키워드의 값이 무엇인지 결정하는 역할.
+
+                </MarginBox>
+
+            </SubContents>
+
+        </SubCateBox>
+
+     <ExplanationDiv>
+
+        자바스크립트 엔진은 코드를 실행하기 전에 실행 컨텍스트를 생성하고, 이를 콜 스택에 쌓습니다. 즉, 전역 코드가 실행되면
+        전역 실행 컨텍스트가 생성되고, 함수가 호출되면 함수 실행 컨텍스트가 생성됩니다. 함수 실행이 종료되면 해당 실행
+        컨텍스트는 콜 스택에서 제거되고, 그 아래에 있던 실행 컨텍스트(일반적으로 전역 컨텍스트)에 제어권이 돌아갑니다.
+
+    </ExplanationDiv>
+
+    </SubCate>
+
+</MainCate>
+
+---
+
+<MainCate>
+
+    <MainCateBox>
+
+        <h2>THIS</h2>
+
+        <MarginBox lang="en">
+
+            자바스크립트에서 'this'는 현재 실행 컨텍스트에 따라 다르게 해석되는 특수한 키워드입니다. 즉,'this'는 실행 컨텍스트에 따라 바뀌게 되는데, 이 컨텍스트는 <StrongTag>함수가 어떻게 호출</StrongTag>되었는지에 달려있습니다.
+
+        </MarginBox>
+
+    </MainCateBox>
+
+    <SubCate>
+
+        <SubCateBox>
+
+            ### 함수 호출 방식
+
+            <SubContents>
+
+                <MarginBox>
+
+                    1. #### 일반적인 함수호출
+
+                        전역 컨텍스트나 함수 호출에서의 this는 전역객체를 가리킨다. 전역함수는 물론이고 심지어 내부함수의 경우도 this는 외부함수가 아닌 전역객체에 바인딩된다.
+
+                        Browser-side에서는 window, Server-side(Node.js)에서는 global 객체를 의미한다.
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            console.log(this); //window
+
+                            function choonSik() {
+                            console.log(this); //window
+                            }
+
+                            choonSik();
+                        ```
+
+                        <StrongTag>내부함수는 일반 함수, 메소드, 콜백함수 어디에서 선언되었든 관계없이 this는 전역객체를 바인딩한다.</StrongTag>
+
+                    2. #### Method
+
+                        메소드 내부의 this는 해당 메소드를 소유한 객체, 즉 해당 메소드를 호출한 객체에 바인딩된다.
+
+                        <p className="code">**CODE**</p>
+
+
+                        ```js
+                            let obj = {
+                                name: "ppark",
+                                consoleName: function () {
+                                    console.log(this.name); //ppark
+                                },
+
+                            };
+
+                            obj.consoleName();
+                        ```
+
+                    3. #### 생성자함수
+
+                        생성자 함수에서 this는 새로 생성되는 인스턴스 객체를 가리킵니다.
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            function Job(job) {
+                                this.job = job;
+                                console.log(this.job); //police
+                            }
+
+                            let police = new Job("police");
+                        ```
+
+                    4. #### Call / Apply / Bind Method
+
+                        apply, call, bind 메소드를 사용하여 함수를 호출하면, <StrongTag>첫 번째 argument로 전달된 객체를 this로 사용</StrongTag>할 수 있습니다.
+
+                        - Call
+
+                        this를 특정 값으로 지정할 수 있다. 첫 번째 argument는 this로 사용할 객체고, 그 이후의 arguments는 함수에 전달됩니다.
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            function thisIs(orange) {
+                                console.log(`This is ${orange} and ${this.apple}`); // This is orange and apple
+                            }
+
+                            let fruit = { apple: "apple" };
+
+                            thisIs.call(fruit, "orange");
+                        ```
+
+                        - Apply method
+
+                        apply 메소드는 call 메소드와 매우 유사하나, 함수에 인수를 배열 형태로 전달한다는 점이 다릅니다.
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            function thisIs(orange, pear) {
+                                console.log(`This is ${orange}, ${pear} and ${this.apple}`);
+                                // This is orange,pear and apple
+                            }
+
+                            let fruit = { apple: "apple" };
+
+                            thisIs.apply(fruit, ["orange", "pear"]);
+                        ```
+
+                        배열 길이만큼 parameter를 설정해줘야 하는 것 같다. 아래 코드를 보면 orange만 출력된다.
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            function thisIs(orange) {
+                                console.log(`This is ${orange}and ${this.apple}`);
+                                // This is orange and apple
+                            }
+
+                            let fruit = { apple: "apple" };
+
+                            thisIs.apply(fruit, ["orange", "pear"]);
+                        ```
+
+                        - Bind method
+
+                        bind 메소드는 함수의 this값을 설정한 <StrongTag>새로운 함수를 반환</StrongTag>합니다. 이 새 함수를 호출하면 this값이 설정된 상태로 원래의 함수가 실행됩니다.
+
+
+                        새로운 함수가 생성되니까, 그 함수를 다시 호출해줘야 한다.
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            function thisIs() {
+                                console.log(`This is ${this.apple}`);
+                            }
+
+                            let fruit = { apple: "apple" };
+
+                            let bindingFruit = thisIs.bind(fruit);
+
+                            bindingFruit(); //This is apple
+                        ```
+
+                        이 함수를 어디에서, 어떻게 호출하든 <StrongTag>this값이 바뀌지 않는다.</StrongTag>
+
+                        <p className="code">**CODE**</p>
+
+                        ```js
+                            function thisIs() {
+                                console.log(`This is ${this.apple}`);
+                            }
+
+                            let fruitOne = { apple: "apple" };
+                            let fruitTwo = { banana: "bananan" };
+
+                            let bindingFruit = thisIs.bind(fruitOne);
+                            bindingFruit(); // This is apple
+                            bindingFruit.call(fruitTwo); // This is apple
+                        ```
+
+                </MarginBox>
+
+            </SubContents>
+
+        </SubCateBox>
+
+    </SubCate>
+
+</MainCate>
+
+---
+
+<MainCate>
+
+    <MainCateBox>
+        ## SCOPE
+
+        <MarginBox lang="en">
+            scope는 변수의 유효 범위를 나타내는 프로그래밍 개념입니다.스코프에 따라 변수에 접근하거나 값을 변경할 수 있는 범위가 결정되기 때문입니다.
+        </MarginBox>
+    </MainCateBox>
+
+    <SubCate>
+        <SubCateBox>
+            ### SCOPE TYPE
+
+            <SubContents>
+                <MarginBox lang="en">
+
+                    1. #### Global scope
+
+                        코드 어디에서든지 참조할 수 있다. 함수 스코프나 블록 스코프를 가지지 않는 변수들이지 않을까?
+
+                    2. #### Local scope
+
+                        함수 내부에서 선언된 변수는 해당 함수 내에서만 접근할 수 있습니다.
+
+                </MarginBox>
+            </SubContents>
+        </SubCateBox>
+
+        <ExplanationDiv>
+            자바스크립트는 <Highlight color="green"> 함수 레벨 스코프</Highlight>를 가진다. 즉, 함수 내에서 선언된 변수는 해당 함수 내에서만 접근 가능하다는 것입니다. 이는 다른 언어에서 흔히 볼 수 있는
+            <Highlight color="green">블록 레벨 스코프</Highlight>와는 다르다.
+        </ExplanationDiv>
+
+        <HighlightBox color="green">
+            ### 함수 레벨 스코프와 블록 레벨 스코프
+
+            ㄴ안ㄹㄴㄹ
+        </HighlightBox>
+
+    </SubCate>
+
+</MainCate>

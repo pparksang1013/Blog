@@ -3,7 +3,9 @@
     align-items: center;
     max-width: fit-content;
     padding: 5px 12px;
-    border-radius: 20px;
+    border-radius: 50px;
+    max-height: 23px;
+    margin-bottom: 5px;
 }
 
 .tag_circle {
@@ -11,14 +13,22 @@
     height: 8px;
     border-radius: 50%;
     margin-left: -5px;
+    background-color: #fff;
 }
 
 .tag_text {
     padding-top: 1px;
     font-family: var(--font-mona);
-    font-size: 12.4px;
-    letter-spacing: 0.2px;
+    font-size: 11px;
+    letter-spacing: 1px;
     margin-left: 5px;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+/* JS tag */
+.tag_box.javascript {
+    background: linear-gradient(90deg, rgba(246, 219, 26, 1) 0%, rgba(242, 245, 27, 1) 250%);
 }
 
 /* React tag */
@@ -26,23 +36,7 @@
     background: linear-gradient(90deg, rgba(83, 101, 252, 1) -150%, rgba(82, 207, 252, 1) 100%);
 }
 
-.tag_circle.react {
-    background-color: #fff;
-}
-
-.tag_text.react {
-    color: #fff;
-}
-
 /* Programming tag */
 .tag_box.programming {
     background: linear-gradient(135deg, rgba(108, 108, 108, 1) 10%, #9cb8a9 100%);
-}
-
-.tag_circle.programming {
-    background-color: #fff;
-}
-
-.tag_text.programming {
-    color: #fff;
 }

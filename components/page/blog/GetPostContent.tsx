@@ -1,38 +1,36 @@
 import Link from "next/link";
 import Tag from "../../Tag";
-import Image from "next/image";
 
 // 💅CSS
-import style from "./blog.module.css";
+// import style from "./blog.module.css";
+import GetKeywords from "./GetKeywords";
+import "/style/blog.css";
+
+import { CiLocationArrow1 } from "react-icons/ci";
 
 interface blogProps {
     tag: string;
     title: string;
     path: string;
-    summary: string;
-    thumbnail: string;
+    keywords: string[];
 }
 
 function GetPostContent(props: blogProps) {
-    const { tag, title, path, summary, thumbnail } = props;
+    const { tag, title, path, keywords } = props;
 
     const blogPath = path.replace(".mdx", "");
 
     return (
-        <div className={style.blog}>
-            <div className={style.image_box}>
-                <Image src={thumbnail} alt="posting" layout="fill" />
-            </div>
+        <div className="blog">
+            <Link href={`blog/${blogPath}`}>
+                <h1 className="blog_title">{title}</h1>
 
-            <div className={style.blog_contents}>
                 <Tag tag={tag} />
 
-                <Link href={`blog/${blogPath}`}>
-                    <h1 className={style.blog_title}>{title}</h1>
-                </Link>
+                <GetKeywords keywordArr={keywords} />
 
-                <div className={style.summary}>{summary}</div>
-            </div>
+                <CiLocationArrow1 className="icon" />
+            </Link>
         </div>
     );
 }

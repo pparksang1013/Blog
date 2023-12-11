@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Tag from "../../Tag";
+import Title from "./Title";
 
 // 💅CSS
-// import style from "./blog.module.css";
+import style from "./blog.module.css";
 import GetKeywords from "./GetKeywords";
-import "/style/blog.css";
 
 import { CiLocationArrow1 } from "react-icons/ci";
 
@@ -21,15 +21,15 @@ function GetPostContent(props: blogProps) {
     const blogPath = path.replace(".mdx", "");
 
     return (
-        <div className="blog">
+        <div className={style.blog}>
             <Link href={`blog/${blogPath}`}>
-                <h1 className="blog_title">{title}</h1>
+                <Title title={title} />
 
                 <Tag tag={tag} />
 
                 <GetKeywords keywordArr={keywords} />
 
-                <CiLocationArrow1 className="icon" />
+                <CiLocationArrow1 className={style.icon} />
             </Link>
         </div>
     );

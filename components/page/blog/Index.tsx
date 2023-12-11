@@ -18,8 +18,7 @@ function Blog() {
                         tag={ele.tag}
                         title={ele.title}
                         path={ele._raw.sourceFileName}
-                        summary={ele.summary}
-                        thumbnail={ele.thumbnail!}
+                        keywords={ele.keywords}
                         key={i}
                     />
                 );

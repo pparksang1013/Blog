@@ -4,52 +4,74 @@
     padding-bottom: 120px;
     display: flex;
     flex-wrap: wrap;
+    gap: 30px;
 }
 
 /* 👀 GetPostContent css */
 .blog {
-    width: calc(1500px / 3 - 10px);
+    width: calc(var(--max-width) / 2 - 30px);
     height: fit-content;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     border: 1px solid #0000001b;
-    margin: 0 14px 14px 0;
-}
-
-.blog:nth-child(3n) {
-    margin: 0;
-}
-
-.blog .image_box {
-    width: 100%;
-    height: 300px;
-    min-height: 300px;
-    overflow: hidden;
-    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px 30px 30px;
     position: relative;
+    transition: all 0.25s;
 }
 
-.blog .blog_contents {
-    position: relative;
-    padding: 10px 20px 20px;
-}
-
-.blog .blog_contents a .blog_title {
-    font-size: 1.6rem;
+.blog a .blog_title {
+    font-size: 4rem;
+    font-family: var(--font-mona);
     font-weight: 900;
     line-height: 1.3;
-    word-spacing: 2px;
-    word-wrap: break-word;
-    margin-top: 1rem;
+    word-spacing: 3px;
+    word-break: keep-all;
+    margin: 1rem 0;
+    color: var(--black);
+    -webkit-text-stroke: 1px var(--black);
+}
+
+.blog a .blog_title.KR {
+    -webkit-text-stroke: 2px var(--black);
+    font-size: 4.1rem;
+    word-spacing: 0px;
+}
+
+.blog:hover {
+    border: 1px solid var(--dark-grey);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05), -1px -1px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 👀 GetKeyword css */
+.keywords_box {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.keywords_box p {
+    height: 20px;
+    min-height: 20px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    padding: 0.8px 12px;
+    color: #fff;
+    background-color: #dbdbdb;
+    font-weight: 900;
+}
+
+.blog a .icon {
+    color: var(--grey);
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 1rem;
     transition: color 0.25s;
 }
 
-.blog .blog_contents .summary {
-    margin-top: 0.2rem;
-    font-size: 0.88rem;
-}
-
-.blog .blog_contents:hover a .blog_title {
-    color: var(--green);
+.blog:hover .icon {
+    color: var(--dark-grey);
 }

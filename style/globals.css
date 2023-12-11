@@ -2,10 +2,29 @@
     --max-width: 1400px;
 
     /* COLOR */
-    --black: #2d2d2d;
+    --main: #f26052;
+    --black: #434343;
     --grey: #f2f2f2;
+    --dark-grey: #ccccd2;
+    --green: #02a676;
+    --red: #f24b4b;
     --orange: 241, 152, 88;
+
+    /* TAG COLOR */
     --react-color: 23, 186, 245;
+    --js-color: 246, 219, 26, 1;
+
+    /* HIGHLIGHT COLOR */
+    --highlight-green: #e4ff19;
+
+    /* HIGHLIGHTBOX COLOR */
+    --highlight-box-green: #fbfff2;
+
+    /* MARGIN & PADDING SIZE */
+    --size-smaller: 4rem;
+    --size-small: 6rem;
+    --size-normal: 8rem;
+    --size-big: 10rem;
 
     --primary-glow: conic-gradient(
         from 180deg at 50% 50%,
@@ -45,6 +64,10 @@ a {
 button {
     background-color: transparent;
     border: none;
+}
+
+code span {
+    font-family: var(--font-proggy);
 }
 
 /* @media (prefers-color-scheme: dark) {

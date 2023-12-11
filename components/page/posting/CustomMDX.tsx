@@ -3,7 +3,11 @@ import "/style/customMDX.css";
 
 const CustomMDX: MDXComponents = {
     MainCate: ({ children }: { children: React.ReactNode }) => {
-        return <section className="main_category">{children}</section>;
+        return (
+            <section className="main_category" id="mdx">
+                {children}
+            </section>
+        );
     },
 
     MainCateBox: ({ children }: { children: React.ReactNode }) => {

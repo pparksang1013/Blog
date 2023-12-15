@@ -1,17 +1,16 @@
 div[data-rehype-pretty-code-fragment] {
     margin: 0 !important;
-    width: 100% !important;
 }
 
 pre {
     background-color: rgb(53, 51, 48) !important;
+    white-space: pre-wrap;
 }
 
 code {
     counter-reset: line;
     padding: 20px 6px;
     margin-bottom: 1rem;
-    font-size: 18px;
     border-radius: 20px;
     line-height: 1.3;
 }
@@ -23,10 +22,17 @@ code > [data-line]::before {
     /* Other styling */
     display: inline-block;
     width: 1rem;
-    text-align: right;
+    text-align: left;
     color: gray;
+    padding: 0 8px;
 }
 
 code span {
     vertical-align: middle;
+    font-size: 18px;
+    word-wrap: break-word;
+}
+
+#mdx ul li code {
+    width: max-content;
 }

@@ -3,90 +3,59 @@ title: "자바스크립트 핵심개념"
 summary: "this 공부하다가 정리해본 자바스크립트 핵심개념"
 date: "2023-11-24"
 tag: "javascript"
-keywords: ["this", "scope", "context"]
+keywords: ["this", "scope", "context", "hoisting", "closure"]
 ---
 
-<MainCate>
+<MainCate tag="js">
 
-    <MainCateBox>
-
+    <div className="main_category_box">
         ## 실행 컨텍스트
 
         <MarginBox>
-
-            실행 컨텍스트(Execution Context)는 현재 실행되고 있는 코드 단위를 관리하는 범위로, 코드의 실행 순서, 변수의 범위(scope),
+            실행 컨텍스트는 현재 실행되고 있는 코드 단위를 관리하는 범위다. 코드의 실행 순서, 변수의 범위,
             this 바인딩 등을 결정합니다.
-
         </MarginBox>
-
-    </MainCateBox>
+    </div>
 
     <SubCate>
+        <div className="sub_cate_box">
+            ### 실행 컨텍스트 구성
 
-        <SubCateBox>
+            <div className="sub_contents">
+                <MarginBox lang="">
+                    1. #### Variable Object
 
-            <h3 className="sub_cate_title">실행 컨텍스트 구성</h3>
+                        var로 선언된 변수와, 함수 선언식으로 선언된 함수를 위한 Environment Record를 제공.
 
-            <SubContents>
+                    2. #### Lexical Environment
 
-                <MarginBox>
+                        let, const로 선언된 변수와, 함수 표현식으로 선언된 함수를 위한 Environment Record를 제공.
 
-                1. #### Variable Object
+                    3. #### This binding
 
-                     var로 선언된 변수와, 함수 선언식으로 선언된 함수를 위한 Environment Record를 제공.
-
-                2. #### Lexical Environment
-
-                    let, const로 선언된 변수와, 함수 표현식으로 선언된 함수를 위한 Environment Record를 제공.
-
-                3. #### This binding
-
-                    this 키워드의 값이 무엇인지 결정하는 역할.
-
+                        this 키워드의 값이 무엇인지 결정하는 역할.
                 </MarginBox>
-
-            </SubContents>
-
-        </SubCateBox>
-
-     <ExplanationDiv>
-
-        자바스크립트 엔진은 코드를 실행하기 전에 실행 컨텍스트를 생성하고, 이를 콜 스택에 쌓습니다. 즉, 전역 코드가 실행되면
-        전역 실행 컨텍스트가 생성되고, 함수가 호출되면 함수 실행 컨텍스트가 생성됩니다. 함수 실행이 종료되면 해당 실행
-        컨텍스트는 콜 스택에서 제거되고, 그 아래에 있던 실행 컨텍스트(일반적으로 전역 컨텍스트)에 제어권이 돌아갑니다.
-
-    </ExplanationDiv>
-
+            </div>
+        </div>
     </SubCate>
 
 </MainCate>
 
-<MainCate>
-
-    <MainCateBox>
-
-        <h2>THIS</h2>
+<MainCate tag="js">
+    <div className="main_category_box">
+        ## THIS
 
         <MarginBox lang="en">
-
-            자바스크립트에서 'this'는 현재 실행 컨텍스트에 따라 다르게 해석되는 특수한 키워드입니다. 즉,'this'는 실행 컨텍스트에 따라 바뀌게 되는데, 이 컨텍스트는 <StrongTag>함수가 어떻게 호출</StrongTag>되었는지에 달려있습니다.
-
+            자바스크립트에서 this는 현재 실행 컨텍스트에 따라 다르게 해석되는 특수한 키워드입니다. this는 실행 컨텍스트에 따라 바뀌게 되는데, 이 컨텍스트는 <StrongTag>함수가 어떻게 호출</StrongTag>되었는지에 달려있습니다.
         </MarginBox>
-
-    </MainCateBox>
+    </div>
 
     <SubCate>
-
-        <SubCateBox>
-
+        <div className="sub_cate_box">
             ### 함수 호출 방식
-
-            <SubContents>
-
-                <MarginBox>
-
+            <div className="sub_contents">
+                <MarginBox lang="">
                     1. #### 일반적인 함수호출
-
                         전역 컨텍스트나 함수 호출에서의 this는 전역객체를 가리킨다. 전역함수는 물론이고 심지어 내부함수의 경우도 this는 외부함수가 아닌 전역객체에 바인딩된다.
 
                         Browser-side에서는 window, Server-side(Node.js)에서는 global 객체를 의미한다.
@@ -94,34 +63,32 @@ keywords: ["this", "scope", "context"]
                         <p className="code">**CODE**</p>
 
                         ```js
-                            console.log(this); //window
+                        console.log(this); //window
 
-                            function choonSik() {
+                        function choonSik() {
                             console.log(this); //window
-                            }
+                        }
 
-                            choonSik();
+                        choonSik();
                         ```
 
                         <StrongTag>내부함수는 일반 함수, 메소드, 콜백함수 어디에서 선언되었든 관계없이 this는 전역객체를 바인딩한다.</StrongTag>
 
                     2. #### Method
-
                         메소드 내부의 this는 해당 메소드를 소유한 객체, 즉 해당 메소드를 호출한 객체에 바인딩된다.
 
                         <p className="code">**CODE**</p>
 
 
                         ```js
-                            let obj = {
-                                name: "ppark",
-                                consoleName: function () {
-                                    console.log(this.name); //ppark
-                                },
+                        let obj = {
+                            name: "ppark",
+                            consoleName: function () {
+                                console.log(this.name); //ppark
+                            },
+                        };
 
-                            };
-
-                            obj.consoleName();
+                        obj.consoleName();
                         ```
 
                     3. #### 생성자함수
@@ -131,49 +98,50 @@ keywords: ["this", "scope", "context"]
                         <p className="code">**CODE**</p>
 
                         ```js
-                            function Job(job) {
-                                this.job = job;
-                                console.log(this.job); //police
-                            }
+                        function Job(job) {
+                            this.job = job;
+                            console.log(this.job); //police
+                        }
 
-                            let police = new Job("police");
+                        let police = new Job("police");
                         ```
 
                     4. #### Call / Apply / Bind Method
 
                         apply, call, bind 메소드를 사용하여 함수를 호출하면, <StrongTag>첫 번째 argument로 전달된 객체를 this로 사용</StrongTag>할 수 있습니다.
 
-                        - Call
+                        ##### Call
 
                         this를 특정 값으로 지정할 수 있다. 첫 번째 argument는 this로 사용할 객체고, 그 이후의 arguments는 함수에 전달됩니다.
 
                         <p className="code">**CODE**</p>
 
                         ```js
-                            function thisIs(orange) {
-                                console.log(`This is ${orange} and ${this.apple}`); // This is orange and apple
-                            }
+                        function thisIs(orange) {
+                            console.log(`This is ${orange} and ${this.apple}`);
+                            // This is orange and apple
+                        }
 
-                            let fruit = { apple: "apple" };
+                        let fruit = { apple: "apple" };
 
-                            thisIs.call(fruit, "orange");
+                        thisIs.call(fruit, "orange");
                         ```
 
-                        - Apply method
+                        ##### Apply method
 
-                        apply 메소드는 call 메소드와 매우 유사하나, 함수에 인수를 배열 형태로 전달한다는 점이 다릅니다.
+                        apply 메소드는 call 메소드와 매우 유사하나, 함수에 argument를 배열을 전달한다는 점이 다르다.
 
                         <p className="code">**CODE**</p>
 
                         ```js
-                            function thisIs(orange, pear) {
-                                console.log(`This is ${orange}, ${pear} and ${this.apple}`);
-                                // This is orange,pear and apple
-                            }
+                        function thisIs(orange, pear) {
+                            console.log(`This is ${orange}, ${pear} and ${this.apple}`);
+                            // This is orange,pear and apple
+                        }
 
-                            let fruit = { apple: "apple" };
+                        let fruit = { apple: "apple" };
 
-                            thisIs.apply(fruit, ["orange", "pear"]);
+                        thisIs.apply(fruit, ["orange", "pear"]);
                         ```
 
                         배열 길이만큼 parameter를 설정해줘야 하는 것 같다. 아래 코드를 보면 orange만 출력된다.
@@ -181,17 +149,17 @@ keywords: ["this", "scope", "context"]
                         <p className="code">**CODE**</p>
 
                         ```js
-                            function thisIs(orange) {
-                                console.log(`This is ${orange}and ${this.apple}`);
-                                // This is orange and apple
-                            }
+                        function thisIs(orange) {
+                            console.log(`This is ${orange}and ${this.apple}`);
+                            // This is orange and apple
+                        }
 
-                            let fruit = { apple: "apple" };
+                        let fruit = { apple: "apple" };
 
-                            thisIs.apply(fruit, ["orange", "pear"]);
+                        thisIs.apply(fruit, ["orange", "pear"]);
                         ```
 
-                        - Bind method
+                        ##### Bind method
 
                         bind 메소드는 함수의 this값을 설정한 <StrongTag>새로운 함수를 반환</StrongTag>합니다. 이 새 함수를 호출하면 this값이 설정된 상태로 원래의 함수가 실행됩니다.
 
@@ -201,15 +169,15 @@ keywords: ["this", "scope", "context"]
                         <p className="code">**CODE**</p>
 
                         ```js
-                            function thisIs() {
-                                console.log(`This is ${this.apple}`);
-                            }
+                        function thisIs() {
+                            console.log(`This is ${this.apple}`);
+                        }
 
-                            let fruit = { apple: "apple" };
+                        let fruit = { apple: "apple" };
 
-                            let bindingFruit = thisIs.bind(fruit);
+                        let bindingFruit = thisIs.bind(fruit);
 
-                            bindingFruit(); //This is apple
+                        bindingFruit(); //This is apple
                         ```
 
                         이 함수를 어디에서, 어떻게 호출하든 <StrongTag>this값이 바뀌지 않는다.</StrongTag>
@@ -217,68 +185,151 @@ keywords: ["this", "scope", "context"]
                         <p className="code">**CODE**</p>
 
                         ```js
-                            function thisIs() {
-                                console.log(`This is ${this.apple}`);
-                            }
+                        function thisIs() {
+                            console.log(`This is ${this.apple}`);
+                        }
 
-                            let fruitOne = { apple: "apple" };
-                            let fruitTwo = { banana: "bananan" };
+                        let fruitOne = { apple: "apple" };
+                        let fruitTwo = { banana: "bananan" };
 
-                            let bindingFruit = thisIs.bind(fruitOne);
-                            bindingFruit(); // This is apple
-                            bindingFruit.call(fruitTwo); // This is apple
+                        let bindingFruit = thisIs.bind(fruitOne);
+                        bindingFruit(); // This is apple
+                        bindingFruit.call(fruitTwo); // This is apple
                         ```
-
                 </MarginBox>
-
-            </SubContents>
-
-        </SubCateBox>
-
+            </div>
+        </div>
     </SubCate>
 
 </MainCate>
 
-<MainCate>
-
-    <MainCateBox>
+<MainCate tag="js">
+    <div className="main_category_box">
         ## SCOPE
 
         <MarginBox lang="en">
-            scope는 변수의 유효 범위를 나타내는 프로그래밍 개념입니다.스코프에 따라 변수에 접근하거나 값을 변경할 수 있는 범위가 결정되기 때문입니다.
+            scope는 변수의 유효 범위를 나타내는 프로그래밍 개념이다.스코프에 따라 변수에 접근하거나 값을 변경할 수 있는 범위가 결정된다.
         </MarginBox>
-    </MainCateBox>
+    </div>
 
     <SubCate>
-        <SubCateBox>
+        <div className="sub_cate_box">
             ### SCOPE TYPE
 
-            <SubContents>
+            <div className="sub_contents">
                 <MarginBox lang="en">
-
                     1. #### Global scope
-
-                        코드 어디에서든지 참조할 수 있다. 함수 스코프나 블록 스코프를 가지지 않는 변수들이지 않을까?
+                        전역 스코프는 코드의 어디에서든지 접근 가능한 변수의 범위를 의미한다.
 
                     2. #### Local scope
+                        로컬 스코프는 코드 블록 내에서만 변수가 접근 가능한 범위를 의미한다. 이 범위는 함수 내부나 코드 블록{} 내부를 의미한다. 로컬 스코프에서 선언된 변수는 그 범위를 벗어나면 접근할 수 없으며, 메모리에서 해제됩니다.
 
-                        함수 내부에서 선언된 변수는 해당 함수 내에서만 접근할 수 있습니다.
+                        ##### 함수 레벨 스코프
+                            함수 레벨 스코프는 함수 내부에서 선언된 변수가 함수 내부에서만 유효하다는 것을 의미한다. 함수 범위를 벗어나면 해당 변수는 존재하지 않는다. JavaScript(ES6 이전)와 PHP 등이 이에 해당된다.
 
+                        ##### 블락 레벨 스코프
+                             중괄호{}로 둘러싸인 영역에 선언된 변수가 영역 내에서만 유효하다는 것을 의미한다. C, Java, Python, JavaScript(let, const 키워드) 등이 이에 해당된다.
+
+                            <HighlightBox>
+                                ### <span>☁️</span> 로컬 스코프
+
+                                로컬스코프가 함수 레벨 스코프와 블락 레벨 스코프로 나뉜다고 생각해서 일단 위 방식대로 정리했다.
+                            </HighlightBox>
+
+                    3. #### Lexical scope
+                        변수가 <StrongTag>선언된 위치</StrongTag>에 의해 그 범위가 결정되고, 자바스크립트는 렉시컬 스코프를 따른다.
+
+                        <p className="code">**CODE**</p>
+                            ```js
+                            let y = 5; // global
+
+                            function alpha() {
+                                let y = 10;
+                                console.log(y); // 10
+                                beta();
+                            }
+
+                            function beta() {
+                                console.log(y); // 5
+                            }
+
+                            alpha();
+                            ```
+
+                        <HighlightBox>
+                            ### <span>☁️</span> 렉시컬 스코프
+
+                            어디에 선언되냐에 따라 달라진다고 했지만
+                            렉시컬 스코프도 함수 레벨 스코프 기준으로 구분되는거 아닐까?라는 생각을 해본다.
+
+                            위 코드 기준 beta함수가 스코프 때문에 alpha함수 y변수에 접근을 할 수가 없다.
+
+                            "선언된 위치"라고 해서 "자꾸 작성한 코드 위"이라는 잘못된 생각을 한다.
+                            함수 내부에서 함수를 호출해도 호출된 함수가 전역에 있다면, 함수 내부변수를 참조하지 않고, 전역에 있는 변수를 참조한다. 그러니까 함수가 호출되면 "어디에 선언되어있는지"는 함수안에 있는 함수인가? 전역에 작성된 함수인가? 이래서 선언된 위치를 확인해야한다.
+                        </HighlightBox>
                 </MarginBox>
-            </SubContents>
-        </SubCateBox>
-
-        <ExplanationDiv>
-            자바스크립트는 <Highlight color="green"> 함수 레벨 스코프</Highlight>를 가진다. 즉, 함수 내에서 선언된 변수는 해당 함수 내에서만 접근 가능하다는 것입니다. 이는 다른 언어에서 흔히 볼 수 있는
-            <Highlight color="green">블록 레벨 스코프</Highlight>와는 다르다.
-        </ExplanationDiv>
-
-        <HighlightBox color="green">
-            ### 함수 레벨 스코프와 블록 레벨 스코프
-
-            ㄴ안ㄹㄴㄹ
-        </HighlightBox>
-
+            </div>
+        </div>
     </SubCate>
 
+</MainCate>
+
+<MainCate tag="js">
+
+    <div className="main_category_box">
+        ## HOISTING
+
+        <MarginBox lang="en">
+            인터프리터가 코드를 실행하기 전에 함수, 변수, 클래스 또는 import의 <StrongTag><Highlight>선언문</Highlight>을 해당 스코프의 맨 위로 이동</StrongTag>시키는 과정이다.
+
+
+            <HighlightBox>
+                ### <span>⚡️</span> 선언문
+
+                식별자를 선언하는 구문
+            </HighlightBox>
+        </MarginBox>
+
+    </div>
+
+</MainCate>
+
+<MainCate tag="js">
+  <div className="main_category_box">
+    ## CLOSURE
+
+    <MarginBox lang="en">
+        클로저는 <StrongTag>내부 함수가 외부 함수의 스코프에 접근</StrongTag>할 수 있는 것을 말한다.클로저는 함수가 생성될 때의 환경을 <StrongTag>기억</StrongTag>하고, 이 환경을 나중에도 사용할 수 있다.
+
+        클로저를 활용하면 프라이빗 변수를 사용할 수 있다. 다른 코드에서 직접적으로 변경할 수 없는 변수를 만들 수 있다는 것을 의미합니다.
+
+        <p className="code">**CODE**</p>
+
+        ```js
+        function makeAdder(x) {
+            return function(y) {
+                return x + y;
+            };
+        }
+
+        const add5 = makeAdder(5);
+        const add10 = makeAdder(10);
+
+        console.log(add5(2));  // 7
+        console.log(add10(2)); // 12
+        ```
+
+        <HighlightBox>
+            ### <span>☁️</span> 헷갈릴까봐
+
+            add5는 makeAdder함수를 호출해서 x인자 값으로 5를 받고, 리턴값으로 함수를 add5 변수에 저장한다.
+
+            그러고 add5를 실행하면 리턴받은 함수을 실행한다. 그래서 y의 값에 2가 들어가는거다.
+
+            나는 makeAdder함수를 변수에 저장하면 x인자 값을 받는 함수 자체를 저장한다고 생각했다. 그래서 y의 값이 어떻게 할당되는거지 헷갈렸다. <TextSizeDown>
+            기본이 부족하다ㅠ.</TextSizeDown>
+        </HighlightBox>
+    </MarginBox>
+
+  </div>
 </MainCate>

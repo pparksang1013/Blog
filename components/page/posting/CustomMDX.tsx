@@ -2,49 +2,53 @@ import type { MDXComponents } from "mdx/types";
 import "/style/customMDX.css";
 
 const CustomMDX: MDXComponents = {
-    MainCate: ({ children }: { children: React.ReactNode }) => {
-        return (
-            <section className="main_category" id="mdx">
-                {children}
-            </section>
-        );
-    },
+  MainCate: ({
+    children,
+    tag,
+    down,
+  }: {
+    children: React.ReactNode;
+    tag: string;
+    down: string;
+  }) => {
+    return (
+      <section className={`main_category ${tag} ${down}`} id={`mdx`}>
+        {children}
+      </section>
+    );
+  },
 
-    MainCateBox: ({ children }: { children: React.ReactNode }) => {
-        return <div className="main_category_box">{children}</div>;
-    },
+  SubCate: ({ children }: { children: React.ReactNode }) => {
+    return <section className="sub_category">{children}</section>;
+  },
 
-    SubCate: ({ children }: { children: React.ReactNode }) => {
-        return <section className="sub_category">{children}</section>;
-    },
+  StrongTag: ({ children }: { children: React.ReactNode }) => {
+    return <strong className="strong_tag">{children}</strong>;
+  },
 
-    SubCateBox: ({ children }: { children: React.ReactNode }) => {
-        return <div className="sub_cate_box">{children}</div>;
-    },
+  MarginBox: ({
+    children,
+    lang,
+  }: {
+    children: React.ReactNode;
+    lang: string;
+  }) => {
+    let isLanguage = lang ? "en" : "";
 
-    ExplanationDiv: ({ children }: { children: React.ReactNode }) => {
-        return <div className="explanation">{children}</div>;
-    },
+    return <div className={`margin_box ${isLanguage && lang}`}>{children}</div>;
+  },
 
-    StrongTag: ({ children }: { children: React.ReactNode }) => {
-        return <strong>{children}</strong>;
-    },
+  Highlight: ({ children }: { children: React.ReactNode }) => {
+    return <span className="highlight">{children}</span>;
+  },
 
-    SubContents: ({ children }: { children: React.ReactNode }) => {
-        return <div className="sub_contents">{children}</div>;
-    },
+  HighlightBox: ({ children }: { children: React.ReactNode }) => {
+    return <div className="highlight_box">{children}</div>;
+  },
 
-    MarginBox: ({ children, lang }: { children: React.ReactNode; lang: string }) => {
-        return <div className={`margin_box ${lang}`}>{children}</div>;
-    },
-
-    Highlight: ({ children, color }: { children: React.ReactNode; color: string }) => {
-        return <span className={`highlight ${color}`}>{children}</span>;
-    },
-
-    HighlightBox: ({ children, color }: { children: React.ReactNode; color: string }) => {
-        return <div className={`highlight_box ${color}`}>{children}</div>;
-    },
+  TextSizeDown: ({ children }: { children: React.ReactNode }) => {
+    return <span className="text_size_down">{children}</span>;
+  },
 };
 
 export default CustomMDX;

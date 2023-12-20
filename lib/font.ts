@@ -1,5 +1,15 @@
 import localFont from "next/font/local";
 
+export const wanted = localFont({
+    variable: "--font-wanted",
+    src: [
+        {
+            path: "../asset/font/WantedSansVariable.ttf",
+            weight: "variable",
+        },
+    ],
+});
+
 export const mona = localFont({
     variable: "--font-mona",
     src: [
@@ -14,24 +24,6 @@ export const mona = localFont({
         {
             path: "../asset/font/Mona-Sans-LightWide.woff2",
             weight: "100",
-        },
-    ],
-});
-
-export const line = localFont({
-    variable: "--font-line",
-    src: [
-        {
-            path: "../asset/font/LINESeedKR-Th.woff2",
-            weight: "100",
-        },
-        {
-            path: "../asset/font/LINESeedKR-Rg.woff2",
-            weight: "400",
-        },
-        {
-            path: "../asset/font/LINESeedKR-Bd.woff2",
-            weight: "900",
         },
     ],
 });

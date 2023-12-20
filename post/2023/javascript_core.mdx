@@ -46,7 +46,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
         ## THIS
 
         <MarginBox lang="en">
-            자바스크립트에서 this는 현재 실행 컨텍스트에 따라 다르게 해석되는 특수한 키워드입니다. this는 실행 컨텍스트에 따라 바뀌게 되는데, 이 컨텍스트는 <StrongTag>함수가 어떻게 호출</StrongTag>되었는지에 달려있습니다.
+            자바스크립트에서 this는 현재 실행 컨텍스트에 따라 다르게 해석되는 특수한 키워드입니다. this는 실행 컨텍스트에 따라 바뀌게 되는데, 이 컨텍스트는 **함수가 어떻게 호출**되었는지에 달려있습니다.
         </MarginBox>
     </div>
 
@@ -72,7 +72,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
                         choonSik();
                         ```
 
-                        <StrongTag>내부함수는 일반 함수, 메소드, 콜백함수 어디에서 선언되었든 관계없이 this는 전역객체를 바인딩한다.</StrongTag>
+                        **내부함수는 일반 함수, 메소드, 콜백함수 어디에서 선언되었든 관계없이 this는 전역객체를 바인딩한다.**
 
                     2. #### Method
                         메소드 내부의 this는 해당 메소드를 소유한 객체, 즉 해당 메소드를 호출한 객체에 바인딩된다.
@@ -108,7 +108,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
 
                     4. #### Call / Apply / Bind Method
 
-                        apply, call, bind 메소드를 사용하여 함수를 호출하면, <StrongTag>첫 번째 argument로 전달된 객체를 this로 사용</StrongTag>할 수 있습니다.
+                        apply, call, bind 메소드를 사용하여 함수를 호출하면, **첫 번째 argument로 전달된 객체를 this로 사용**할 수 있습니다.
 
                         ##### Call
 
@@ -161,7 +161,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
 
                         ##### Bind method
 
-                        bind 메소드는 함수의 this값을 설정한 <StrongTag>새로운 함수를 반환</StrongTag>합니다. 이 새 함수를 호출하면 this값이 설정된 상태로 원래의 함수가 실행됩니다.
+                        bind 메소드는 함수의 this값을 설정한 **새로운 함수를 반환**합니다. 이 새 함수를 호출하면 this값이 설정된 상태로 원래의 함수가 실행됩니다.
 
 
                         새로운 함수가 생성되니까, 그 함수를 다시 호출해줘야 한다.
@@ -180,7 +180,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
                         bindingFruit(); //This is apple
                         ```
 
-                        이 함수를 어디에서, 어떻게 호출하든 <StrongTag>this값이 바뀌지 않는다.</StrongTag>
+                        이 함수를 어디에서, 어떻게 호출하든 **this값이 바뀌지 않는다.**
 
                         <p className="code">**CODE**</p>
 
@@ -231,13 +231,13 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
                              중괄호{}로 둘러싸인 영역에 선언된 변수가 영역 내에서만 유효하다는 것을 의미한다. C, Java, Python, JavaScript(let, const 키워드) 등이 이에 해당된다.
 
                             <HighlightBox>
-                                ### <span>☁️</span> 로컬 스코프
+                                ### ☁️ 로컬 스코프
 
                                 로컬스코프가 함수 레벨 스코프와 블락 레벨 스코프로 나뉜다고 생각해서 일단 위 방식대로 정리했다.
                             </HighlightBox>
 
                     3. #### Lexical scope
-                        변수가 <StrongTag>선언된 위치</StrongTag>에 의해 그 범위가 결정되고, 자바스크립트는 렉시컬 스코프를 따른다.
+                        변수가 **선언된 위치**에 의해 그 범위가 결정되고, 자바스크립트는 렉시컬 스코프를 따른다.
 
                         <p className="code">**CODE**</p>
                             ```js
@@ -257,7 +257,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
                             ```
 
                         <HighlightBox>
-                            ### <span>☁️</span> 렉시컬 스코프
+                            ### ☁️ 렉시컬 스코프
 
                             어디에 선언되냐에 따라 달라진다고 했지만
                             렉시컬 스코프도 함수 레벨 스코프 기준으로 구분되는거 아닐까?라는 생각을 해본다.
@@ -277,14 +277,14 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
 <MainCate tag="js">
 
     <div className="main_category_box">
-        ## HOISTING
+        ## <TextSizeDown></TextSizeDown>
 
         <MarginBox lang="en">
-            인터프리터가 코드를 실행하기 전에 함수, 변수, 클래스 또는 import의 <StrongTag><Highlight>선언문</Highlight>을 해당 스코프의 맨 위로 이동</StrongTag>시키는 과정이다.
+            인터프리터가 코드를 실행하기 전에 함수, 변수, 클래스 또는 import의 **<Highlight>선언문</Highlight>을 해당 스코프의 맨 위로 이동**시키는 과정이다.
 
 
             <HighlightBox>
-                ### <span>⚡️</span> 선언문
+                ### ⚡️ 선언문
 
                 식별자를 선언하는 구문
             </HighlightBox>
@@ -296,10 +296,10 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
 
 <MainCate tag="js">
   <div className="main_category_box">
-    ## CLOSURE
+    ## <TextSizeDown>CLOSURE</TextSizeDown>
 
     <MarginBox lang="en">
-        클로저는 <StrongTag>내부 함수가 외부 함수의 스코프에 접근</StrongTag>할 수 있는 것을 말한다.클로저는 함수가 생성될 때의 환경을 <StrongTag>기억</StrongTag>하고, 이 환경을 나중에도 사용할 수 있다.
+        클로저는 **내부 함수가 외부 함수의 스코프에 접근**할 수 있는 것을 말한다.클로저는 함수가 생성될 때의 환경을 **기억**하고, 이 환경을 나중에도 사용할 수 있다.
 
         클로저를 활용하면 프라이빗 변수를 사용할 수 있다. 다른 코드에서 직접적으로 변경할 수 없는 변수를 만들 수 있다는 것을 의미합니다.
 
@@ -320,7 +320,7 @@ keywords: ["this", "scope", "context", "hoisting", "closure"]
         ```
 
         <HighlightBox>
-            ### <span>☁️</span> 헷갈릴까봐
+            ### ☁️ 헷갈릴까봐
 
             add5는 makeAdder함수를 호출해서 x인자 값으로 5를 받고, 리턴값으로 함수를 add5 변수에 저장한다.
 

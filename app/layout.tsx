@@ -8,9 +8,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+    const title = "Blog";
+
     return (
         <html lang="ko">
-            <Fonts />
+            <head>
+                <title>{title}</title>
+                <Fonts />
+            </head>
             <body>
                 <Header />
                 {children}

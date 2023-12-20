@@ -5,7 +5,7 @@
     padding: 8px 0 7px;
     border-radius: 50px;
     max-height: 30px;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
 }
 
 .tag_circle {
@@ -19,7 +19,7 @@
 .tag_text {
     padding-top: 1px;
     font-family: var(--font-mona);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 900;
     letter-spacing: 0.2px;
     margin: 0 13px 0 5px;
@@ -27,9 +27,14 @@
     text-transform: uppercase;
 }
 
+/* Web tag */
+.tag_box.web {
+    background: var(--web-gradient);
+}
+
 /* JS tag */
 .tag_box.javascript {
-    background: linear-gradient(90deg, rgba(246, 219, 26, 1) 0%, rgba(242, 245, 27, 1) 250%);
+    background: linear-gradient(109.6deg, rgba(255, 219, 47, 1) 11.2%, rgb(255, 217, 136) 100%);
 }
 
 /* React tag */

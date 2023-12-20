@@ -52,13 +52,11 @@
 }
 
 .keywords_box p {
-    height: 20px;
-    min-height: 20px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     border-radius: 20px;
-    padding: 0.8px 12px;
-    color: #fff;
-    background-color: #dbdbdb;
+    padding: 3px 16px;
+    color: var(--dark-grey);
+    border: 1px solid var(--light-grey);
     font-weight: 900;
 }
 

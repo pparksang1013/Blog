@@ -319,3 +319,22 @@ h2 .text_size_down {
 .web .highlight_box {
     background-color: rgba(var(--web-color), 0.2);
 }
+
+#mdx.package ol > li:hover::before {
+    border: 1px solid rgb(var(--package));
+    color: rgb(var(--package));
+    -webkit-text-stroke: 1px rgb(var(--package));
+}
+.package .sub_contents h5 {
+    background-color: rgba(var(--package), 0.5);
+}
+.package strong {
+    color: rgba(var(--package), 1);
+}
+.package .highlight {
+    background-color: rgba(var(--package), 0.8);
+    color: #fff;
+}
+.package .highlight_box {
+    background-color: rgba(var(--package), 0.2);
+}

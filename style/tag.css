@@ -34,7 +34,7 @@
 
 /* JS tag */
 .tag_box.javascript {
-    background: linear-gradient(109.6deg, rgba(255, 219, 47, 1) 11.2%, rgb(255, 217, 136) 100%);
+    background: linear-gradient(135deg, rgba(255, 219, 47, 1) 11.2%, rgb(255, 217, 136) 100%);
 }
 
 /* React tag */
@@ -45,4 +45,9 @@
 /* Programming tag */
 .tag_box.programming {
     background: linear-gradient(135deg, rgba(108, 108, 108, 1) 10%, #9cb8a9 100%);
+}
+
+/* Package tag */
+.tag_box.package {
+    background: linear-gradient(135deg, #9796f0, #fbc7d4);
 }

@@ -1,21 +1,23 @@
 import type { MDXComponents } from "mdx/types";
-import "/style/customMDX.css";
+import React, { ReactElement } from "react";
+import Link from "next/link";
+import "./style/custom_MDX.css";
+import "./style/maincategory_prop.css";
 
 const CustomMDX: MDXComponents = {
-    MainCate: ({ children, tag, down }: { children: React.ReactNode; tag: string; down: string }) => {
+    MainCate: ({ children, tag }: { children: React.ReactNode; tag: string }) => {
+        const contents = React.Children.toArray(children)
+            .filter((child): child is ReactElement => React.isValidElement(child) && child.type === "h2")
+            .map((ele) => {
+                return <Link href={`#${ele.props.id}`}>{ele.props.children}</Link>;
+            });
+
         return (
-            <section className={`main_category ${tag} ${down}`} id={`mdx`}>
+            <section className={`main_category ${tag}`} id="mdx">
+                <nav id="contents">{contents}</nav>
                 {children}
             </section>
         );
-    },
-
-    SubCate: ({ children }: { children: React.ReactNode }) => {
-        return <section className="sub_category">{children}</section>;
-    },
-
-    StrongTag: ({ children }: { children: React.ReactNode }) => {
-        return <strong className="strong_tag">{children}</strong>;
     },
 
     MarginBox: ({ children, lang }: { children: React.ReactNode; lang: string }) => {
@@ -24,16 +26,8 @@ const CustomMDX: MDXComponents = {
         return <div className={`margin_box ${isLanguage && lang}`}>{children}</div>;
     },
 
-    Highlight: ({ children }: { children: React.ReactNode }) => {
-        return <span className="highlight">{children}</span>;
-    },
-
     HighlightBox: ({ children }: { children: React.ReactNode }) => {
         return <div className="highlight_box">{children}</div>;
-    },
-
-    TextSizeDown: ({ children }: { children: React.ReactNode }) => {
-        return <span className="text_size_down">{children}</span>;
     },
 
     SyntaxBox: ({ children }: { children: React.ReactNode }) => {

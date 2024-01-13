@@ -1,75 +1,144 @@
 ---
-title: "styled-components"
+title: "styled-components 💅"
 summary: "스타일드 컴포넌츠"
 date: "2023-12-26"
 tag: "package"
-keyword:
+keyword: ["template literal", "interpolation"]
 ---
 
 <MainCate tag="package">
 
-    <div className="main_category_box">
+    **CSS-in-JS** 라이브러리. CSS를 JavaScript 파일 내에 작성할 수 있다. 이를 통해 컴포넌트 스타일링을 더욱 효율적으로 관리하고, 동적인 스타일링을 쉽게 구현할 수 있습니다.
 
-        ## <TextSizeDown>styled-components</TextSizeDown>
+    <HighlightBox>
+        ### ⚡️ CSS-IN-JS
 
-        <MarginBox lang="en">
+        CSS를 JavaScript 파일 내부에 작성하고 관리하는 방식.
 
-            <Highlight>CSS-in-JS</Highlight> 라이브러리. CSS를 JavaScript 파일 내에 작성할 수 있다. 이를 통해 컴포넌트 스타일링을 더욱 효율적으로 관리하고, 동적인 스타일링을 쉽게 구현할 수 있습니다.
+    </HighlightBox>
 
-            <HighlightBox>
-                ### ⚡️ CSS-IN-JS
+    <h2 id="section_1">Getting Started</h2>
 
-                CSS를 JavaScript 파일 내부에 작성하고 관리하는 방식.
+    styled-components는 태그된 **템플릿 리터럴**을 이용해 스타일을 적용한다.
 
-            </HighlightBox>
+    <HighlightBox>
+        ### ⚡️ Template literal
 
-        </MarginBox>
+        ES6에서 도입된 새로운 문자열 표기법이다. 백틱 `으로 감싸진 문자열이고, 여러 줄에 걸친 문자열도 작성할 수 있다.
+    </HighlightBox>
 
-    </div>
+    <SyntaxBox>
 
-</MainCate>
+        <p id="syntax">**SYNTAX**</p>
 
-<MainCate tag="package">
+        ```js
+        const Title = styled.h1`
+            font-size: 1.5em;
+            text-align: center;
+            color: #BF4F74;
+        `;
+        ```
 
-    <div className="main_category_box">
-        ## <TextSizeDown>create Global Style</TextSizeDown>
-
-        <MarginBox lang="en">
-
-            전역스타일 설정
-
-            <p className="code">**CODE**</p>
-
-            ```js
-            import { createGlobalStyle } from 'styled-components';
-
-            const GlobalStyle = createGlobalStyle`
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: 'Open Sans', sans-serif;
-                background: #f2f2f2;
-            }
-
-            a {
-                color: #333;
-                text-decoration: none;
-            }
-            `;
+        <dl>
+            <dt>styled</dt>
+            <dd>import한 스타일 컴포넌트 객체.</dd>
+            <dt>h1</dt>
+            <dd>스타일을 적용할 HTML 태그를 입력한다.</dd>
+        </dl>
 
 
-            function App() {
-                return (
-                <>
-                    <GlobalStyle />
-                </>
-                );
-            }
+    </SyntaxBox>
 
-            export default App;
-            ```
+    <h2 id="section_2">createGlobalStyle</h2>
 
-        </MarginBox>
-    </div>
+    전역 스타일 설정
+
+    <p id="code">**CODE**</p>
+
+        ```js
+        import { createGlobalStyle } from 'styled-components';
+
+        const GlobalStyle = createGlobalStyle`
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: #f2f2f2;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        `;
+
+
+        function App() {
+            return (
+            <>
+                <GlobalStyle />
+            </>
+            );
+        }
+
+        export default App;
+        ```
+
+        <h2 id="section_3">Props</h2>
+
+        styled-components는 props로 동적 스타일링이 가능하다.
+
+        동적 스타일링은 **interpolation**을 통해 함수를 전달하여 props에 따라 스타일을 동적으로 바꿀 수 있다.
+
+        <HighlightBox>
+            ### ⚡️ Interpolation
+
+            템플릿 리터럴 문자열 안에 $\{ \} 형태를 이용해 변수나 함수의 결과를 사용할 수 있다.
+
+            $\{ \} 형태 자체를 interpolation이라고 하는 것 같다.
+        </HighlightBox>
+
+        <p id="code">**CODE**</p>
+
+        ```js
+        const Button = styled.button`
+            background: ${props => props.primary ? "palevioletred" : "white"};
+            color: ${props => props.primary ? "white" : "palevioletred"};
+        `;
+
+        <Button primary>Primary Button</Button>
+        <Button>Default Button</Button>
+        ```
+
+        <h2 id="section_4">Extending</h2>
+
+        상속받고 싶은 컴포넌트를 import한 styled components 함수로 감싸주면 된다.
+
+        <p id="code">**CODE**</p>
+
+        ```js
+        import styled from "styled-components"
+
+        const Button = styled.button`
+            color: #BF4F74;
+            font-size: 1em;
+            margin: 1em;
+            padding: 0.25em 1em;
+            border: 2px solid #BF4F74;
+            border-radius: 3px;
+        `;
+
+        const TomatoButton = styled(Button)`
+            color: tomato;
+            border-color: tomato;
+        `;
+
+        return (
+            <div>
+                <Button>Normal Button</Button>
+                <TomatoButton>Tomato Button</TomatoButton>
+            </div>
+        );
+        ```
 
 </MainCate>

@@ -8,7 +8,6 @@
 .title {
     font-size: 6rem;
     font-weight: 900;
-    line-height: 1.6;
     word-spacing: 12px;
     word-break: keep-all;
     font-family: var(--font-mona);

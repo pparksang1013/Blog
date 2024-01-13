@@ -1,30 +1,17 @@
+#mdx {
+    color: var(--black);
+}
+
 #mdx h1,
 #mdx h2,
 #mdx h3 {
     font-family: var(--font-mona), var(--font-wanted);
 }
 
-/* ⭐️ HIGHLIGHT BOX⭐️ */
-.highlight_box {
-    margin: 2rem 0;
-    border-radius: 3px;
-    padding: 30px 20px;
-    color: var(--black);
-}
-
-.highlight_box p {
-    margin: 12px 0;
-}
-
-.highlight_box h3 {
-    font-size: 1.2rem !important;
-    margin-bottom: 6px;
-}
-
 /* ⭐️ COMMON ⭐️ */
 #mdx h2 {
     margin: var(--size-small) 0 0;
-    font-size: 5rem;
+    font-size: 3.5rem;
     -webkit-text-stroke: 1.2px var(--black);
 }
 
@@ -33,14 +20,13 @@
 }
 
 #mdx h3 {
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: 800;
     margin: 0;
 }
 
 #mdx h4 {
     font-size: 1.3rem;
-    margin-bottom: 0.3rem;
 }
 
 #mdx h5 {
@@ -57,17 +43,107 @@
 
 #mdx p {
     line-height: 1.5;
-    font-size: 16.2px;
+    font-size: 17px;
     word-break: keep-all;
     word-wrap: break-word;
     font-family: var(--font-wanted);
-    margin: 0.4rem 0;
+    margin: 1.1rem 0;
+}
+
+#mdx p code {
+    background-color: var(--light-grey);
+    padding: 2px 4px;
+    border-radius: 0;
 }
 
 #mdx strong {
-    font-size: 17px;
     letter-spacing: 0.18px;
-    padding: 1px 4px;
+    padding: 2px 5px;
+}
+
+/* ⭐️ CONTENTS ⭐️ */
+#contents_box {
+    position: sticky;
+    top: 20px;
+}
+
+#contents {
+    position: absolute;
+    left: -200px;
+    padding: 2px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 12px;
+    max-width: 150px;
+}
+#contents::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background-color: var(--black);
+    border-radius: 10px;
+}
+
+#contents a {
+    font-size: 1.1rem;
+    font-weight: 900;
+    word-spacing: 4px;
+    font-family: var(--font-mona), var(--font-wanted);
+    color: var(--light-grey);
+    padding-right: 1rem;
+    text-align: right;
+    word-wrap: break-word;
+}
+#contents a:hover {
+    color: var(--black);
+}
+
+/* ⭐️ DL DT DD ⭐️ */
+#mdx dt {
+    background-color: var(--light-grey);
+    width: fit-content;
+    padding: 2px 4px;
+    margin: 2rem 0 0;
+    font-weight: 900;
+    font-size: 1.1em;
+}
+#mdx dt:first-of-type {
+    margin-top: 0;
+}
+
+#mdx dd {
+    margin-top: 6px;
+}
+
+#mdx dd code {
+    background-color: var(--light-grey);
+    padding: 0 2px;
+    border-radius: 0;
+}
+
+/* ⭐️ HIGHLIGHT BOX ⭐️ */
+.highlight_box {
+    margin: 2rem 0;
+    border-radius: 3px;
+    padding: 30px 20px;
+    color: var(--black);
+}
+
+.highlight_box h3 {
+    font-size: 1.2rem !important;
+    margin-top: 2.4rem !important;
+}
+.highlight_box h3:first-of-type {
+    margin: 0 !important;
+}
+
+.highlight_box p {
+    font-size: 0.96em !important;
+    line-height: 1 !important;
+    margin: 0.86em 0 !important;
 }
 
 /* ⭐️ OL TAG ⭐️ */
@@ -125,19 +201,17 @@
     background-color: rgba(var(--js), 0.5);
 }
 
-/* ⭐️ NAV CONTENTS⭐️ */
-#contents {
-    display: flex;
-    flex-direction: column;
+#mdx ol > li p {
+    margin: 0.4rem 0 0.9rem;
 }
 
 /* ⭐️ CODE ⭐️ */
-#mdx .code {
+#code {
     margin-top: 2px;
     margin-bottom: 0 !important;
 }
 
-#mdx .code strong {
+#code strong {
     font-size: 13px;
     color: #bfbfbf;
     padding: 0;
@@ -150,29 +224,19 @@
 }
 
 /* ⭐️ SYNTAX BOX ⭐️ */
-.syntax_box {
+#syntax {
+    margin: 1rem 0 0.2rem !important;
+}
+
+#syntax strong {
+    font-size: 1.1em;
+    color: var(--dark-grey);
+    padding: 0;
+    background-color: transparent;
+}
+
+#syntax_box {
     margin-top: 4px;
-}
-
-.syntax_box code {
-    background-color: #e9e9ef;
-    padding: 2px 6px;
-    font-weight: 700;
-    border-radius: 0;
-}
-
-#mdx .syntax_box p {
-    margin: 7px 0;
-}
-
-#mdx .syntax {
-    margin-top: 2px;
-}
-
-#mdx .syntax strong {
-    color: var(--black) !important;
-    font-size: 1.25rem;
-    font-weight: 800;
 }
 
 .return {

@@ -8,13 +8,19 @@ const CustomMDX: MDXComponents = {
     MainCate: ({ children, tag }: { children: React.ReactNode; tag: string }) => {
         const contents = React.Children.toArray(children)
             .filter((child): child is ReactElement => React.isValidElement(child) && child.type === "h2")
-            .map((ele) => {
-                return <Link href={`#${ele.props.id}`}>{ele.props.children}</Link>;
+            .map((ele, i) => {
+                return (
+                    <Link href={`#${ele.props.id}`}>
+                        {i + 1}. {ele.props.children}
+                    </Link>
+                );
             });
 
         return (
             <section className={`main_category ${tag}`} id="mdx">
-                <nav id="contents">{contents}</nav>
+                <nav id="contents_box">
+                    <div id="contents">{contents}</div>
+                </nav>
                 {children}
             </section>
         );
@@ -31,7 +37,7 @@ const CustomMDX: MDXComponents = {
     },
 
     SyntaxBox: ({ children }: { children: React.ReactNode }) => {
-        return <div className="syntax_box">{children}</div>;
+        return <div id="syntax_box">{children}</div>;
     },
 };
 

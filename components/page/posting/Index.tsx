@@ -4,7 +4,7 @@ import CustomMDX from "./CustomMDX";
 import Tag from "../../Tag";
 
 // 💅CSS
-import style from "./style/posting.module.css";
+import style from "../../../style/posting/posting.module.css";
 
 export function generateStaticParams() {
     const staticPath = allPosts.map((post: Post) => {
@@ -24,8 +24,8 @@ function BlogPosting({ params }: { params: { slug: string } }) {
 
     return (
         <div className={style.wrapper}>
+            <Tag tag={findPath.tag} size={40} />
             <h1 className={style.title}>{findPath.title}</h1>
-            <Tag tag={findPath.tag} />
             <MDXComponet components={CustomMDX} />
         </div>
     );

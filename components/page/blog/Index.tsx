@@ -3,7 +3,7 @@ import GetPostContent from "./GetPostContent";
 import { compareDesc } from "date-fns";
 
 // 💅CSS
-import style from "./blog.module.css";
+import style from "../../../style/blog/blog.module.css";
 
 function Blog() {
     const sortDate = allPosts.sort((a, b) => {

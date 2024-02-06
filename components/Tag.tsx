@@ -1,18 +1,21 @@
-import "../style/tag.css";
+import Image, { StaticImageData } from "next/image";
+
+// IMAGE LINK
+import programming from "../public/tag/programming.png";
 
 interface tagType {
     tag: string;
+    size: number;
 }
 
 function Tag(props: tagType) {
-    const { tag } = props;
+    const { tag, size } = props;
 
-    return (
-        <div className={`tag_box ${tag}`}>
-            <p className={`tag_circle ${tag}`}></p>
-            <p className={`tag_text ${tag}`}>{tag}</p>
-        </div>
-    );
+    const TAG_OBJ: Record<string, StaticImageData> = {
+        programming,
+    };
+
+    return <Image src={TAG_OBJ[tag]} height={size} alt="tag" />;
 }
 
 export default Tag;

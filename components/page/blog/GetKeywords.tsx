@@ -1,4 +1,4 @@
-import style from "./blog.module.css";
+import style from "../../../style/blog/blog.module.css";
 
 interface IKeyword {
     keywordArr: string[];

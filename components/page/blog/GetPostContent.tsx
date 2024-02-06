@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Tag from "../../Tag";
-import Title from "./Title";
 
 // 💅CSS
-import style from "./blog.module.css";
+import style from "../../../style/blog/blog.module.css";
 import GetKeywords from "./GetKeywords";
 
 import { CiLocationArrow1 } from "react-icons/ci";
@@ -22,10 +21,10 @@ function GetPostContent(props: blogProps) {
 
     return (
         <div className={style.blog}>
-            <Link href={`blog/${blogPath}`}>
-                <Title title={title} />
+            <Tag tag={tag} size={30} />
 
-                <Tag tag={tag} />
+            <Link href={`blog/${blogPath}`}>
+                <h2 className={style.blog_title}>{title}</h2>
 
                 <GetKeywords keywordArr={keywords} />
 

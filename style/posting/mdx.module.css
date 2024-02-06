@@ -2,17 +2,11 @@
     color: var(--black);
 }
 
-#mdx h1,
-#mdx h2,
-#mdx h3 {
-    font-family: var(--font-mona), var(--font-wanted);
-}
-
 /* ⭐️ COMMON ⭐️ */
 #mdx h2 {
     margin: var(--size-small) 0 0;
-    font-size: 3.5rem;
-    -webkit-text-stroke: 1.2px var(--black);
+    font-size: 3.6rem;
+    -webkit-text-stroke: 2px var(--black);
 }
 
 #mdx h2:nth-of-type(n + 2) {
@@ -20,13 +14,14 @@
 }
 
 #mdx h3 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin: 0;
+    font-size: 1.55rem;
+    font-weight: 900;
+    margin-top: 3rem;
+    -webkit-text-stroke: 0.3px var(--black);
 }
 
 #mdx h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 #mdx h5 {
@@ -42,8 +37,9 @@
 }
 
 #mdx p {
-    line-height: 1.5;
-    font-size: 17px;
+    line-height: 1.68;
+    text-indent: 8px;
+    font-size: 16.5px;
     word-break: keep-all;
     word-wrap: break-word;
     font-family: var(--font-wanted);
@@ -57,8 +53,8 @@
 }
 
 #mdx strong {
+    padding: 2px 4px;
     letter-spacing: 0.18px;
-    padding: 2px 5px;
 }
 
 /* ⭐️ CONTENTS ⭐️ */
@@ -142,7 +138,6 @@
 
 .highlight_box p {
     font-size: 0.96em !important;
-    line-height: 1 !important;
     margin: 0.86em 0 !important;
 }
 
@@ -155,8 +150,8 @@
 }
 
 #mdx ol > li {
-    padding-left: 3rem;
-    padding-bottom: 0.4rem;
+    padding-left: 2.6rem;
+    padding-bottom: 0.3rem;
     margin-bottom: 0.8rem;
     position: relative;
 }
@@ -165,40 +160,34 @@
     content: counter(step);
 
     position: absolute;
-    left: 0;
+    left: 2px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 24px;
+    height: 22px;
+    min-width: fit-content;
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 900;
-    -webkit-text-stroke: 1px var(--black);
 
-    border: 1px solid var(--grey);
-    padding: 5px 10px;
     border-radius: 5px;
-
-    min-width: 8px;
+    border: 1px solid var(--grey);
 
     box-shadow: 0.5px 0.5px 3px var(--grey), -0.5px -0.5px 3px var(--grey);
     background-color: #fff;
-
-    transition: all 0.25s;
 }
 
 #mdx ol > li::after {
     content: "";
     position: absolute;
     background-color: rgb(222, 220, 217);
-    width: 1.8px;
-    top: calc(1.875rem + 6px);
+    width: 3px;
+    top: 1.875rem;
     left: 0.91rem;
     bottom: 0;
-    border-radius: 10px;
-}
-#mdx ol > li:hover::after {
-    background-color: rgba(var(--js), 0.5);
+    border-radius: 50px;
 }
 
 #mdx ol > li p {
@@ -216,11 +205,7 @@
     color: #bfbfbf;
     padding: 0;
     background-color: transparent;
-}
-
-/* ⭐️ MARGIN BOX ⭐️ */
-.margin_box {
-    margin: 1rem 0 var(--size-smaller);
+    text-transform: uppercase;
 }
 
 /* ⭐️ SYNTAX BOX ⭐️ */

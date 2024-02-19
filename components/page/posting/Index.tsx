@@ -24,9 +24,13 @@ function BlogPosting({ params }: { params: { slug: string } }) {
 
     return (
         <div className={style.wrapper}>
-            <Tag tag={findPath.tag} size={40} />
-            <h1 className={style.title}>{findPath.title}</h1>
+            <div className={style.title_box}>
+                <Tag tag={findPath.tag} size={52} />
+                <h1 className={style.title}>{findPath.title}</h1>
+            </div>
             <MDXComponet components={CustomMDX} />
+
+
         </div>
     );
 }

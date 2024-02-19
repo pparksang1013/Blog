@@ -1,14 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import style from "./header.module.css";
+import logo from "../../../public/logo.png";
 
 function Header() {
     return (
         <header className={style.wrapper}>
             <Link href="/" className={style.logo}>
-                <div>
-                    <span className={style.fontSizeDown}>i</span>
-                    <span className={style.mp_letterStyle}>mp</span>ort
-                </div>
+                <Image src={logo} height={30} alt="logo" />
             </Link>
         </header>
     );

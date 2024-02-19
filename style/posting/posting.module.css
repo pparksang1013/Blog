@@ -1,15 +1,24 @@
 .wrapper {
-    max-width: 880px;
+    max-width: 1000px;
     min-height: 100vh;
-    margin: 0 auto;
+    margin: 70px auto;
     padding-bottom: 120px;
 }
 
+.title_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
 .title {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 900;
     word-spacing: 12px;
     word-break: keep-all;
     color: var(--black);
-    -webkit-text-stroke: 2px var(--black);
+    -webkit-text-stroke: 1.2px var(--black);
+    text-align: center;
+    max-width: 700px;
 }

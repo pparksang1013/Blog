@@ -29,8 +29,6 @@ function BlogPosting({ params }: { params: { slug: string } }) {
                 <h1 className={style.title}>{findPath.title}</h1>
             </div>
             <MDXComponet components={CustomMDX} />
-
-
         </div>
     );
 }

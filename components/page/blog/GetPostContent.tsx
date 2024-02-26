@@ -23,7 +23,7 @@ function GetPostContent(props: blogProps) {
         <div className={style.blog}>
             <Tag tag={tag} size={30} />
 
-            <Link href={`blog/${blogPath}`}>
+            <Link href={`posting/${blogPath}`}>
                 <h2 className={style.blog_title}>{title}</h2>
 
                 <GetKeywords keywordArr={keywords} />

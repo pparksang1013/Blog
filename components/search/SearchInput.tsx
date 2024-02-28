@@ -1,10 +1,11 @@
-interface SearchProps {
-    setSearch: (value: string) => void;
-}
+// TYPE
+import { ISearch } from "@/type/search_type";
 
-function SearchInput({ setSearch }: SearchProps) {
+function SearchInput({ setSearch }: ISearch) {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
+        if (setSearch) {
+            setSearch(e.target.value);
+        }
     };
 
     return <input type="text" name="search" id="search_input" onChange={handleChange} />;

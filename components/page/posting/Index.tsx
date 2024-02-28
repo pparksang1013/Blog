@@ -1,10 +1,15 @@
 import { allPosts, Post } from "@/.contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
+
+// COMPONENT
 import CustomMDX from "./CustomMDX";
 import Tag from "../../Tag";
 
 // 💅CSS
 import style from "../../../style/posting/posting.module.css";
+
+// LIB
+import replaceUtil from "@/lib/replaceUtil";
 
 export function generateStaticParams() {
     const staticPath = allPosts.map((post: Post) => {
@@ -16,7 +21,8 @@ export function generateStaticParams() {
 
 function BlogPosting({ params }: { params: { slug: string } }) {
     const findPath: any = allPosts.find((post: Post) => {
-        const replacePath = post._raw.sourceFileName.replace(".mdx", "");
+        const replacePath = replaceUtil(post._raw.sourceFileName);
+
         return replacePath === params.slug;
     });
 

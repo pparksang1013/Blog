@@ -10,11 +10,10 @@ import "../../style/search/search.css";
 // LIB
 import useSearchState from "@/lib/useSearchState";
 
-interface Modalprop {
-    setModal: (value: boolean) => void;
-}
+// TYPE
+import { IModal } from "@/type/search_type";
 
-function SearchModal({ setModal }: Modalprop) {
+function SearchModal({ setModal }: IModal) {
     const [search, setSearch] = useSearchState("");
 
     return (

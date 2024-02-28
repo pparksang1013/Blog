@@ -1,12 +1,13 @@
 import { allPosts, Post } from "@/.contentlayer/generated";
 import Link from "next/link";
 
-interface SearchProp {
-    search: string | undefined;
-    setModal: (value: boolean) => void;
-}
+// LIB
+import replaceUtil from "@/lib/replaceUtil";
 
-function SearchList({ search, setModal }: SearchProp) {
+// TYPE
+import { IModal, ISearch } from "@/type/search_type";
+
+function SearchList({ search, setModal }: ISearch & IModal) {
     const results = !search
         ? []
         : allPosts.filter((post: Post) => {
@@ -14,7 +15,7 @@ function SearchList({ search, setModal }: SearchProp) {
           });
 
     const resultList = results.map((ele) => {
-        const replacePath = ele._raw.sourceFileName.replace(".mdx", "");
+        const replacePath = replaceUtil(ele._raw.sourceFileName);
 
         return (
             <li>

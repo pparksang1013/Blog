@@ -3,5 +3,6 @@ export interface IModal {
 }
 
 export interface ISearch {
-    search: string | undefined;
+    search?: string | undefined;
+    setSearch?: (value: string) => void;
 }

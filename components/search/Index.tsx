@@ -19,7 +19,7 @@ function Search() {
                     setModal(true);
                 }}
             >
-                <FiSearch className="search_icon" size={20} />
+                <FiSearch className="search_icon" size={24} />
             </button>
 
             {modal ? <SearchModal setModal={setModal} /> : undefined}

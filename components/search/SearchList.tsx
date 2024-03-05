@@ -1,6 +1,9 @@
 import { allPosts, Post } from "@/.contentlayer/generated";
 import Link from "next/link";
 
+// COMPONENT
+import Tag from "../Tag";
+
 // LIB
 import replaceUtil from "@/lib/replaceUtil";
 
@@ -18,7 +21,8 @@ function SearchList({ search, setModal }: ISearch & IModal) {
         const replacePath = replaceUtil(ele._raw.sourceFileName);
 
         return (
-            <li>
+            <li className="modal_item">
+                <Tag tag={ele.tag} size={14} />
                 <Link href={`posting/${replacePath}`} onClick={() => setModal(false)}>
                     {ele.title}
                 </Link>
@@ -26,7 +30,7 @@ function SearchList({ search, setModal }: ISearch & IModal) {
         );
     });
 
-    return <ul>{resultList}</ul>;
+    return <ul className="modal_list">{resultList}</ul>;
 }
 
 export default SearchList;

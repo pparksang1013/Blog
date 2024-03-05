@@ -20,7 +20,7 @@ function SearchModal({ setModal }: IModal) {
         <div className="search_modal-box">
             <form>
                 <label htmlFor="search_input">
-                    <FiSearch size={20} className="modal_search" />
+                    <FiSearch size={24} className="modal_search" />
                 </label>
                 <SearchInput setSearch={setSearch} />
                 <FiXCircle
@@ -31,7 +31,7 @@ function SearchModal({ setModal }: IModal) {
                     className="modal_close"
                 />
             </form>
-            <SearchList search={search} setModal={setModal} />
+            {search ? <SearchList search={search} setModal={setModal} /> : undefined}
         </div>
     );
 }

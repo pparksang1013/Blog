@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Tag from "../../Tag";
+import GetKeywords from "./GetKeywords";
 
 // 💅CSS
 import style from "../../../style/blog/blog.module.css";
-import GetKeywords from "./GetKeywords";
 
 import { CiLocationArrow1 } from "react-icons/ci";
 

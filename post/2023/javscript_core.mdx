@@ -1,0 +1,267 @@
+---
+title: 자바스크립트 핵심개념 정리
+summary: this 공부하다가 정리해본 자바스크립트 핵심개념
+date: 2023-11-24
+tag: js
+keywords: [this, scope, context, hoisting, closure]
+---
+
+<Wrapper>
+
+    <H2Tag id="h2_ko">
+        실행컨텍스트
+    </H2Tag>
+
+    자바스크립트 코드가 실행되는 환경.
+
+    실행 컨택스트의 동작은, 동일한 환경에 있는 코드들을 실행할 때 필요한 <Highlight>환경정보</Highlight>를 모아 컨텍스트를 구성하고, 이를 콜 스택에 쌓아놓은 뒤, 가장 위에 있는 컨텍스트와 관련 있는 코드들을 실행하는 것으로 코드의 환경과 순서를 보장한다.
+
+    <FlexBox margin="7rem 0">
+        #### 실행컨텍스트 구성
+
+        <FlexItemWrapper>
+        **1. 전역 실행 컨텍스트(Global Execution Context)**: 코드가  <Highlight>처음 실행될 때 생성</Highlight>되는 기본적이고 유일한 실행 컨텍스트다. 이 컨텍스트에서의 변수 객체는 전역 객체(Global Object, GO)를 의미한다.
+
+        **2. 함수 실행 컨텍스트(Function Execution Context)**: 함수가 호출될 때마다 새로 생성되는 실행 컨텍스트다. 이 컨텍스트에서의 변수 객체는 초기에 활성 객체(Activation Object, AO) 개념을 사용하여 설명되었으나, ECMAScript5부터는 렉시컬 환경(Lexical Environment)과 변수 환경(Variable Environment)의 구성요소로 설명된다.
+        </FlexItemWrapper>
+    </FlexBox>
+
+    <FlexBox margin="7rem 0">
+        #### 실행 컨텍스트 실행 단계
+
+        <FlexItemWrapper>
+            #### 생성단계 Creation phase
+            생성 단계에서는 실행 컨텍스트가 초기화 되고, 세 가지 주요 작업이 포함된다.
+
+            **1. 변수 객체 생성(Variable Object Creation)**: 현재 실행 컨텍스트의 변수, 함수 선언, 매개 변수 등의 정보를 수집하여 변수 객체(Variable Object, VO)를 생성한다. 이 단계에서 함수 선언은 메모리에 저장되고, 변수는 undefined로 초기화된다. 변수 객체는 나중에 스코프 체인의 일부가 된다.
+
+            **2. 스코프 체인 생성(Scope Chain Creation)**: 현재 컨텍스트에서 접근할 수 있는 변수, 함수, 그리고 객체들의 리스트를 만듭니다. 이 리스트는 현재 실행 컨텍스트의 변수 객체와 외부 환경의 참조를 연결한다. 이를 통해 현재 실행 컨텍스트에서 외부 환경의 변수와 함수에 접근할 수 있게 된다.
+
+            **3. this**: 실행 컨텍스트에서의 this 값이 결정된다. this의 값은 함수를 어떻게 호출하느냐에 따라 달라진다.
+
+            #### 실행단계 Execution phase
+            실행 단계에서는 실제 코드를 해석하고 실행한다. 생성 단계에서 초기화된 변수와 함수에 실제 값을 할당하거나 계산을 수행한다.
+
+            **1. 변수 할당**: 변수에 값이 할당된다. 생성 단계에서 undefined로 초기화된 변수들에 값이 할당된다.
+
+            **2. 함수 실행**: 함수 호출이 이루어지면 새로운 실행 컨텍스트가 생성되고, 호출된 함수에 대한 실행 컨텍스트가 실행 컨텍스트 스택에 추가된다. 이 과정에서 함수 내부의 코드가 실행된다.
+
+            **3. 코드 실행**: 실행 단계에서는 변수의 할당, 함수의 실행 등 코드 전반에 걸친 작업이 수행됩니다. 이 단계에서는 연산, 반복문 실행, 조건문 평가 등의 작업도 포함됩니다.
+        </FlexItemWrapper>
+    </FlexBox>
+
+    <FlexBox margin="7rem 0">
+        #### 실행컨텍스트가 콜 스택에 추가되는 조건
+
+        <FlexItemWrapper>
+        - 전역코드 실행
+        - 함수 호출
+        - 이벤트 핸들러
+        - eval function
+
+        <HighlightBox>
+            #### 💭 eval 함수
+
+            eval 함수는 자바스크립트에서 문자열로 표현된 자바스크립트 코드를 실행하는 데 사용된다. 이 함수는 전달받은 문자열을 코드로 간주하고, 그 코드를 실행한 후 결과를 반환한다. 하지만 eval 함수의 사용은 보안 문제, 성능 문제, 디버깅의 어려움 등 여러 가지 이유로 <Highlight> 권장되지 않는다.</Highlight>
+        </HighlightBox>
+        </FlexItemWrapper>
+    </FlexBox>
+
+    <HighlightBox>
+        #### ✍🏼 끄적끄적
+
+        - 실행컨텍스트는 자바스크립트 코드를 실행하고 평가하기 위한 환경이다.
+        - 글로벌 필드 코드가 실행되면 전역 실행 컨텍스트 생성이 되는게 아닐까?
+        - 함수가 호출되면 함수 실행 컨텍스트가 생성이 된다.
+        - 코드가 실행되면 실행컨텍스트는 2단계의 과정을 거친다.
+        - 첫번 째, 생성단계에서는 변수 객체 생성, 스코프 체인 생성, this 값이 결정된다.
+            - 변수 생성 객체를 생성할 때, 변수가 undefined로 초기화 된다고 하는데, 이거는 var 키워드만 해당되는게 아닐까??
+        - 두번 째, 실행단계에서 변수나 함수에 값을 할당하고, 계산을 수행하는 과정이다.
+
+
+
+
+    </HighlightBox>
+
+</Wrapper>
+
+<Wrapper>
+    ## THIS
+
+    자바스크립트에서 this는 현재 실행 컨텍스트에 따라 다르게 해석되는 특수한 키워드. this는 실행 컨텍스트에 따라 바뀌게 되는데, this는 <Highlight>
+    함수가 어떻게 호출</Highlight>되었는지에 따라 값이 달라질 수 있다.
+
+    <FlexBox margin="7rem 0">
+        #### this 바인딩 규칙
+
+        <FlexItemWrapper>
+            #### 글로벌필드와 일반적인 함수호출
+
+            전역 컨텍스트나 함수 호출에서의 this는 전역객체를 가리킨다. 전역함수는 물론이고 심지어 내부함수의 경우도 this는 외부함수가 아닌 전역객체에 바인딩된다.
+
+            ```js
+            console.log(this); //window
+
+            function choonSik() {
+                console.log(this); //window
+            }
+
+            choonSik();
+            ```
+
+            내부함수는 일반 함수, 메소드, 콜백함수 어디에서 선언되었든 관계없이 this는 전역객체를 바인딩한다.
+
+            #### method
+
+            메소드 내부의 this는 해당 메소드를 소유한 객체, 즉 해당 메소드를 호출한 객체에 바인딩된다.
+
+            ```js
+            let obj = {
+                name: "ppark",
+                consoleName: function () {
+                    console.log(this.name); //ppark
+                },
+            };
+
+            obj.consoleName();
+            ```
+
+            하지만 <Highlight>메소드 내부 함수는 전역 객체</Highlight> 를 바인딩한다.
+
+            ```js
+            let obj = {
+                name: "ppark",
+                consoleName: function () {
+                    function innerFunc() {
+                        console.log(this.name); //undefined
+                    }
+                    innerFunc()
+                },
+            };
+
+            obj.consoleName();
+            ```
+
+            #### 생성자함수
+
+            생성자 함수에서 this는 새로 생성되는 인스턴스 객체를 가르킨다.
+
+            ```js
+            function Job(job) {
+                this.job = job;
+                console.log(this.job); //police
+            }
+
+            let police = new Job("police");
+            ```
+
+            #### call / apply / bind 함수
+            apply, call, bind 메소드를 사용하면, 첫 번째 argument로 전달된 객체를 this로 사용할 수 있다.
+
+            **1. call**: this를 특정 값으로 지정할 수 있다. 첫 번째 argument는 this로 사용할 객체고, 그 이후의 arguments는 함수에 전달됩니다.
+
+        </FlexItemWrapper>
+    </FlexBox>
+
+</Wrapper>
+
+<Wrapper>
+    ## SCOPE
+
+    scope는 변수의 유효 범위를 나타내는 프로그래밍 개념이다. 스코프에 따라 변수에 접근하거나 값을 변경할 수 있는 범위가 결정된다.
+
+    <FlexBox margin="7rem 0">
+        #### 스코프 종류
+
+        <FlexItemWrapper>
+            #### Global scope
+
+            전역 스코프는 코드의 어디에서든지 접근 가능한 변수의 범위를 의미한다.
+
+            #### Local scope
+
+            로컬 스코프는 코드 블록 내에서만 변수가 접근 가능한 범위를 의미한다. 이 범위는 함수 내부나 코드 블록{} 내부를 의미한다. 로컬 스코프에서 선언된 변수는 그 범위를 벗어나면 접근할 수 없으며, 메모리에서 사라진다.
+
+            ##### 로컬 스코프 종류
+            **1. 함수 레벨 스코프**: 함수 레벨 스코프는 함수 내부에서 선언된 변수가 함수 내부에서만 유효하다는 것을 의미한다. 함수 범위를 벗어나면 해당 변수는 존재하지 않는다. JavaScript(ES6 이전)
+
+            **2. 블락 레벨 스코프**: 블락 레벨 스코프 중괄호{}로 둘러싸인 영역에 선언된 변수가 영역 내에서만 유효하다는 것을 의미한다. C, Java, Python, JavaScript(let, const 키워드) 등이 이에 해당된다.
+
+            #### Lexical scope
+
+            변수가 <Highlight>선언된 위치
+            </Highlight>에 의해 그 범위가 결정되고, 자바스크립트는 렉시컬 스코프를 따른다.
+
+            ```js
+            let y = 5; // global
+
+            function alpha() {
+                let y = 10;
+                console.log(y); // 10
+                beta();
+            }
+
+            function beta() {
+                console.log(y); // 5
+            }
+
+            alpha();
+            ```
+
+            <HighlightBox>
+                #### ✍🏼 끄적끄적
+
+                '선언 위치'라고 해서 '자꾸 작성한 코드 위'라고 인식한다.
+
+                함수 내부에서 함수를 호출했는데 호출된 함수가 전역에 있다면? 함수 내부변수를 참조하지 않고, 전역에 있는 변수를 참조한다. 그러니까 함수가 호출되면 "어디에 선언되어있는지" 확인해야한다. 함수안에 있는 함수인가? 전역에 작성된 함수인가? 이래서 선언된 위치를 확인해야한다.
+            </HighlightBox>
+
+        </FlexItemWrapper>
+    </FlexBox>
+
+</Wrapper>
+
+<Wrapper>
+    ## CLOSURE
+    
+    클로저는 내부 함수가 외부 함수의 스코프에 접근할 수 있는 것을 말한다.클로저는 <Highlight>함수가 생성될 때의 환경을 기억</Highlight>하고, 이 환경을 나중에도 사용할 수 있다.
+
+    클로저를 활용하면 프라이빗 변수를 사용할 수 있다. 다른 코드에서 직접적으로 변경할 수 없는 변수를 만들 수 있다는 것을 의미합니다.
+
+    ```js
+    function makeAdder(x) {
+        return function(y) {
+            return x + y;
+        };
+    }
+
+    const add5 = makeAdder(5);
+    const add10 = makeAdder(10);
+
+    console.log(add5(2)); // 7
+    console.log(add10(2)); // 12
+    ```
+
+    <HighlightBox>
+        #### ✍🏼 끄적끄적
+
+        add5 변수는 makeAdder함수를 호출해서 x인자 값으로 5를 받고, 리턴값으로 함수를 add5 변수에 저장한다. 그 후 add5를 실행하면 리턴받은 함수를 실행한다. 그래서 y의 값에 2가 들어가는거다.
+
+        나는 makeAdder함수를 변수에 저장하면 x인자 값을 받는 함수 자체를 저장한다고 생각했다. 그래서 y의 값이 어떻게 할당되는거지 헷갈렸다.
+
+        - 클로져는 환경을 기억을 한다
+    </HighlightBox>
+
+    <FlexBox margin="7rem 0">
+        #### closure 특징
+
+        <FlexItemWrapper>
+         **1. 외부 함수의 지역 변수에 접근**: 클로저를 포함하는 외부 함수가 실행을 마치고 반환한 후에도, 클로저는 외부 함수의 변수에 접근할 수 있다. 이는 외부 함수의 변수들이 메모리에서 사라지지 않게 하며, 이 변수들은 클로저가 존재하는 한 계속 유지된다.
+
+        **2. 데이터 은닉과 캡슐화**: 클로저를 사용하면 특정 함수에 대한 접근을 제어하고, 데이터를 숨겨서 캡슐화할 수 있다.
+
+        **3. 상태 유지**: 클로저는 상태를 유지할 수 있다. 즉, 함수가 호출될 때마다 변수의 상태가 유지되어, 여러 호출 사이에 데이터를 저장하고 변경할 수 있습니다.
+        </FlexItemWrapper>
+    </FlexBox>
+
+</Wrapper>

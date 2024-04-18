@@ -32,7 +32,8 @@
     word-break: keep-all;
     margin: 0.5rem 0;
     color: var(--black);
-    -webkit-text-stroke: 1.2px var(--black);
+    font-weight: 900;
+    -webkit-text-stroke: 1px var(--black);
 }
 
 /* 👀 GetKeyword css */

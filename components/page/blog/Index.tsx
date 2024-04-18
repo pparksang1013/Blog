@@ -13,6 +13,7 @@ function Blog() {
     return (
         <div className={style.wrapper}>
             {sortDate.map((ele: Post, i: number) => {
+                console.log(ele.keywords);
                 return (
                     <GetPostContent
                         tag={ele.tag}

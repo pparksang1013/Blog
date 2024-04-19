@@ -1,9 +1,5 @@
-import Blog from "@/components/page/blog/Index";
+import "../components/app/style/globalStyle.css";
 
 export default function Home() {
-    return (
-        <>
-            <Blog />
-        </>
-    );
+    return <></>;
 }

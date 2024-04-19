@@ -1,6 +1,4 @@
-import "@/style/globals.css";
-import Fonts from "@/components/Font";
-import Header from "@/components/layout/header/Index";
+import { HeaderComp } from "@/components/app/header/Index";
 
 export const metadata = {
     title: "Blog",
@@ -12,10 +10,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="ko">
             <head>
                 <link rel="favicon" href="./favicon.ico" />
-                <Fonts />
             </head>
             <body>
-                <Header />
+                <HeaderComp />
                 {children}
             </body>
         </html>

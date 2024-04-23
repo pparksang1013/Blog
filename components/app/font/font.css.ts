@@ -1,10 +1,11 @@
-import { globalFontFace, style } from "@vanilla-extract/css";
+import { globalFontFace } from "@vanilla-extract/css";
 
 globalFontFace("suit", {
-    src: `url('/SUIT-Variable.woff2') format('woff2')`,
+    src: `url('/font/SUIT-Variable.woff2') format('woff2')`,
     fontWeight: "variable",
 });
 
-export const suit = style({
-    fontFamily: "suit",
+globalFontFace("gogh", {
+    src: `url('/font/Gogh-ExtraBold.woff2') format('woff2')`,
+    fontWeight: "900",
 });

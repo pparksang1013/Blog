@@ -17,6 +17,10 @@ export const PostingComp = ({ params }: { params: { slug: string } }) => {
         return params.slug === post._raw.sourceFileName.replace(".mdx", "");
     });
 
+    if (!postingPath) {
+        return;
+    }
+
     const CustomMDX = useMDXComponent(postingPath.body.code);
 
     return (

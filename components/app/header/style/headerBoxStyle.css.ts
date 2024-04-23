@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
 const box = style({
-    width: "60vw",
-    maxWidth: "60vw",
+    width: "56vw",
+    maxWidth: "56vw",
     margin: "32px auto 20px",
 });
 

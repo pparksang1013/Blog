@@ -1,3 +1,5 @@
+import { styles } from "./style/mainBoxStyle.css";
+
 export const MainBox = ({ children }: { children: React.ReactNode }) => {
-    return <div>{children}</div>;
+    return <main className={styles.box}>{children}</main>;
 };

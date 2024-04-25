@@ -1,9 +1,11 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import remarkGfm from "remark-gfm";
+import rehypePrettyCode from "rehype-pretty-code";
 
 /** @type {import('rehype-pretty-code').Options} */
-const options = {
-    // See Options section below.
+const prettyCodeOptions = {
+    theme: "monokai",
 };
 
 export const Post = defineDocumentType(() => ({
@@ -23,4 +25,8 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
     contentDirPath: "post",
     documentTypes: [Post],
+    mdx: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+    },
 });

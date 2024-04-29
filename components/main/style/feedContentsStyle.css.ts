@@ -41,12 +41,18 @@ const numBox = style({
 });
 
 const title = style({
-    fontSize: "2.6rem",
+    fontSize: "2.5rem",
     fontWeight: 900,
-    color: `rgba(${globalTheme.rgb.black}, 0.8)`,
     WebkitTextStroke: 0.4,
     marginTop: -5,
     textShadow: `2px 2px 4px rgba(${globalTheme.rgb.black}, 0.05), -2px -2px 4px rgba(${globalTheme.rgb.black}, 0.05)`,
+    color: "transparent",
+    background: `linear-gradient(90deg,rgba(${globalTheme.rgb.black}, 0.9), rgba(${globalTheme.rgb.black}, 0.4) 120%)`,
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    letterSpacing: -0.5,
+    wordSpacing: 5,
 });
 
 const ul = style({
@@ -57,7 +63,6 @@ const ul = style({
 
 const li = style({
     listStyle: "none",
-    // backgroundColor: `rgba(${globalTheme.rgb.primary}, 0.4)`,
     border: `1px solid rgba(${globalTheme.rgb.primary}, 1)`,
     color: `rgba(${globalTheme.rgb.black}, 0.8)`,
     fontWeight: 600,

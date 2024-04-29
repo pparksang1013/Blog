@@ -7,8 +7,8 @@ const month = style({
     fontFamily: globalTheme.fonts.gogh,
     fontSize: "2rem",
     fontWeight: 900,
-    color: `rgba(${globalTheme.rgb.primary}, 0.8)`,
-    textShadow: `2px 2px 4px rgba(${globalTheme.rgb.primary}, 0.1)`,
+    color: `rgba(${globalTheme.rgb.black}, 0.8)`,
+    textShadow: `2px 2px 8px rgba(${globalTheme.rgb.black}, 0.1)`,
 });
 
 export const styles = { month };

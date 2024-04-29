@@ -1,8 +1,8 @@
 import { allPosts, Post } from "@/.contentlayer/generated";
-import { useMDXComponent } from "next-contentlayer/hooks";
 
 // COMP
 import { PostingBox } from "./PostingBox";
+import { PostingContents } from "./PostingContents";
 
 export function generateStaticParams() {
     const staticPath = allPosts.map((post: Post) => {
@@ -13,19 +13,17 @@ export function generateStaticParams() {
 }
 
 export const PostingComp = ({ params }: { params: { slug: string } }) => {
-    const postingPath = allPosts.find((post: Post) => {
+    const postingObj = allPosts.find((post: Post) => {
         return params.slug === post._raw.sourceFileName.replace(".mdx", "");
     });
 
-    if (!postingPath) {
+    if (!postingObj) {
         return;
     }
 
-    const CustomMDX = useMDXComponent(postingPath.body.code);
-
     return (
         <PostingBox>
-            <CustomMDX />
+            <PostingContents posting={postingObj} />
         </PostingBox>
     );
 };

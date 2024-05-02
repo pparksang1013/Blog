@@ -2,10 +2,12 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
 
 /** @type {import('rehype-pretty-code').Options} */
-const options = {
-    // See Options section below.
+const prettyCodeOptions = {
+    theme: "material-theme-darker",
+    keepBackground: false,
 };
 
 export const Post = defineDocumentType(() => ({
@@ -14,10 +16,7 @@ export const Post = defineDocumentType(() => ({
     filePathPattern: `**/*.mdx`,
     fields: {
         title: { type: "string", required: true },
-        // thumbnail: { type: "string", required: false },
         date: { type: "date", required: true },
-        summary: { type: "string", required: true },
-        tag: { type: "string", required: true },
         keywords: { type: "list", of: { type: "string" }, required: false, default: [] },
     },
 }));
@@ -27,6 +26,6 @@ export default makeSource({
     documentTypes: [Post],
     mdx: {
         remarkPlugins: [remarkGfm],
-        rehypePlugins: [[rehypePrettyCode, options]],
+        rehypePlugins: [rehypeSlug, [rehypePrettyCode, prettyCodeOptions]],
     },
 });

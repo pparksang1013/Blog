@@ -1,7 +1,8 @@
 {
     "name": "blog",
-    "version": "0.1.0",
+    "version": "2.0.0",
     "private": true,
+    "description": "리팩토링 - CSS ▶️ vanilla-extract 마이그레이션 - remark, rehype mdx 플러그인 적용",
     "scripts": {
         "dev": "next dev",
         "build": "next build",

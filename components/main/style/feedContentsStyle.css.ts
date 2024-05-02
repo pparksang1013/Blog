@@ -57,6 +57,7 @@ const title = style({
 
 const ul = style({
     display: "flex",
+    flexWrap: "wrap",
     gap: 10,
     marginTop: 8,
 });
@@ -66,10 +67,10 @@ const li = style({
     border: `1px solid rgba(${globalTheme.rgb.primary}, 1)`,
     color: `rgba(${globalTheme.rgb.black}, 0.8)`,
     fontWeight: 600,
-    padding: "2px 10px",
+    padding: "3px 10px",
     borderRadius: 20,
     fontSize: "0.7em",
-    fontFamily: globalTheme.fonts.gogh,
+    fontFamily: globalTheme.fonts.suit,
 });
 
 const right = style({

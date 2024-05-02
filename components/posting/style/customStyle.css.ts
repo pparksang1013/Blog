@@ -101,6 +101,12 @@ export const styles = {
                 fontSize: "0.8em",
             },
         },
+
+        "@media": {
+            "screen and (max-width: 1100px)": {
+                whiteSpace: "pre-wrap",
+            },
+        },
     }),
 
     customA: style({
@@ -125,6 +131,13 @@ export const styles = {
             position: "fixed",
             top: 175,
             right: 500,
+            opacity: 1,
+
+            "@media": {
+                "screen and (max-width: 1700px)": {
+                    opacity: 0,
+                },
+            },
         }),
 
         p: style({

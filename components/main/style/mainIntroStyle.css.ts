@@ -10,6 +10,12 @@ const box = style({
     padding: 100,
     border: "1px solid rgba(0, 0, 0, 0.1)",
     borderRadius: 40,
+
+    "@media": {
+        "screen and (max-width: 800px)": {
+            minWidth: 420,
+        },
+    },
 });
 
 export const styles = {

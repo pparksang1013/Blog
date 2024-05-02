@@ -3,6 +3,12 @@ import { globalTheme } from "@/components/app/style/globalTheme.css";
 
 const box = style({
     width: "100%",
+
+    "@media": {
+        "screen and (max-width: 800px)": {
+            minWidth: 420,
+        },
+    },
 });
 
 const link = style({
@@ -11,7 +17,6 @@ const link = style({
     backgroundColor: "#fff",
     border: `1px solid transparent`,
     maxHeight: 220,
-    width: "100%",
     marginBottom: 30,
     display: "flex",
     flexDirection: "row",
@@ -26,11 +31,25 @@ const link = style({
     ":last-of-type": {
         marginBottom: 0,
     },
+
+    "@media": {
+        "screen and (max-width: 1400px)": {
+            display: "block",
+            height: "fit-content",
+            maxHeight: "fit-content",
+            padding: "30px 40px 50px",
+        },
+    },
 });
 
 const left = style({
     width: "60%",
-    maxWidth: "60%",
+
+    "@media": {
+        "screen and (max-width: 1400px)": {
+            width: "100%",
+        },
+    },
 });
 
 const numBox = style({
@@ -41,7 +60,7 @@ const numBox = style({
 });
 
 const title = style({
-    fontSize: "2.5rem",
+    fontSize: "2.4rem",
     fontWeight: 900,
     WebkitTextStroke: 0.4,
     marginTop: -5,
@@ -85,6 +104,12 @@ const right = style({
     color: globalTheme.colors.grey,
     transition: "all 0.25s",
     fontSize: "0.9em",
+
+    "@media": {
+        "screen and (max-width: 1400px)": {
+            display: "none",
+        },
+    },
 
     selectors: {
         [`${link}:hover &`]: {

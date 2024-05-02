@@ -9,6 +9,13 @@ const month = style({
     fontWeight: 900,
     color: `rgba(${globalTheme.rgb.black}, 0.8)`,
     textShadow: `2px 2px 8px rgba(${globalTheme.rgb.black}, 0.1)`,
+    display: "block",
+
+    "@media": {
+        "screen and (max-width: 1400px)": {
+            display: "none",
+        },
+    },
 });
 
 export const styles = { month };

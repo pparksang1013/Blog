@@ -5,6 +5,12 @@ const box = style({
     marginTop: 100,
     maxWidth: 700,
     position: "relative",
+
+    "@media": {
+        "screen and (max-width: 800px)": {
+            minWidth: 420,
+        },
+    },
 });
 
 const title = style({

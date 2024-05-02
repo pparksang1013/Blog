@@ -3,6 +3,7 @@ import { globalTheme } from "@/components/app/style/globalTheme.css";
 
 const box = style({
     marginTop: 100,
+    maxWidth: 700,
     position: "relative",
 });
 

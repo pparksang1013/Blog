@@ -124,24 +124,24 @@ export const styles = {
         box: style({
             position: "fixed",
             top: 175,
-            left: 240,
+            right: 500,
         }),
 
         p: style({
-            fontWeight: 900,
+            fontWeight: 500,
         }),
 
         ul: style({
-            margin: "10px 0 0 4px",
-            padding: "4px 16px",
-            borderLeft: `1.2px solid rgba(${globalTheme.rgb.black}, 1)`,
+            margin: "10px 0",
+            padding: "4px 0px",
             position: "relative",
         }),
 
         li: style({
-            fontFamily: `${globalTheme.fonts.suit}`,
-            fontWeight: 500,
-            lineHeight: 1.72,
+            fontFamily: globalTheme.fonts.suit,
+            fontWeight: 400,
+            fontSize: "0.96em",
+            lineHeight: 1.8,
             listStyle: "none",
         }),
     },

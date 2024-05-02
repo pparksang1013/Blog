@@ -4,8 +4,8 @@ import { globalTheme } from "../../style/globalTheme.css";
 const logo = style({
     fontWeight: 900,
     WebkitTextStroke: `1.2px rgba(${globalTheme.rgb.black}, 0.8)`,
-    fontSize: "24px !important",
-    margin: "0 !important",
+    fontSize: "24px",
+    margin: "0",
 });
 
 const link = style({

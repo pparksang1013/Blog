@@ -17,7 +17,9 @@ export const PostingContents = ({ posting }: { posting: Post }) => {
                 <h1 className={styles.title}>{posting.title}</h1>
                 <p className={styles.date}>{date}</p>
             </div>
-            <CustomMDX components={CustomMdx} />
+            <div className={styles.box}>
+                <CustomMDX components={CustomMdx} />
+            </div>
         </>
     );
 };

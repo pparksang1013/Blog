@@ -15,7 +15,7 @@ export const CustomContents: React.FC<CustomContentsType> = ({ contents }) => {
 
     return (
         <div className={styles.customContents.box}>
-            <p className={styles.customContents.p}>on this page</p>
+            <p className={styles.customContents.p}>On this page</p>
             <ul className={styles.customContents.ul}>{list}</ul>
         </div>
     );

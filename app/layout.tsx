@@ -1,3 +1,5 @@
+import { Header } from "@/components/app/header/Index";
+
 export const metadata = {
     title: "Blog",
     icons: { icon: "/favicon.ico" },
@@ -9,7 +11,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <head>
                 <link rel="favicon" href="./favicon.ico" />
             </head>
-            <body>{children}</body>
+            <body>
+                <Header />
+                {children}
+            </body>
         </html>
     );
 }

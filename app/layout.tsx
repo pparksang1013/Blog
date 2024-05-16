@@ -1,4 +1,5 @@
 import { Header } from "@/components/app/header/Index";
+import "devicon/devicon.min.css";
 
 export const metadata = {
     title: "Blog",

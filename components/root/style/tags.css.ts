@@ -9,9 +9,10 @@ const ul = style({
 
 const commonLi = style({
     listStyle: "none",
-    fontSize: 13,
-    padding: "0 6px",
+    fontSize: 12,
+    padding: "0 5px 1.5px",
     borderRadius: 2,
+    fontWeight: 400,
 });
 
 const grayLi = style([

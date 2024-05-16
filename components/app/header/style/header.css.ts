@@ -7,12 +7,9 @@ export const headerStyle = {
         display: "flex",
         alignItems: "center",
     }),
-    logoBox: style({
-        width: 1400,
-        margin: "0 auto",
-    }),
+    logoBox: style({ marginLeft: 40 }),
     logo: style({
         fontWeight: 900,
-        fontSize: 22,
+        fontSize: 20,
     }),
 };

@@ -2,7 +2,7 @@ import { TagType } from "@/type/notionDatabaseType";
 import { tagsStyle } from "../style/tags.css";
 
 export const Tags = ({ tags }: { tags: TagType[] }) => {
-    const tag = tags.map((ele) => {
+    const tag = tags.map((ele, i) => {
         let setColorTag;
 
         switch (ele.color) {
@@ -34,7 +34,11 @@ export const Tags = ({ tags }: { tags: TagType[] }) => {
                 setColorTag = tagsStyle.redLi;
                 break;
         }
-        return <li className={setColorTag}>{ele.name}</li>;
+        return (
+            <li className={setColorTag} key={i}>
+                {ele.name}
+            </li>
+        );
     });
 
     return <ul className={tagsStyle.ul}>{tag}</ul>;

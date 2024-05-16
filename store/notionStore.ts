@@ -1,12 +1,12 @@
 import { createStore } from "zustand/vanilla";
 import { NotionDatabaseType } from "@/type/notionDatabaseType";
 
-interface NotionStoreInterface {
+interface NotionStoreType {
     database: NotionDatabaseType[];
     block: any;
 }
 
-const useNotionStore = createStore<NotionStoreInterface>()(() => ({
+const useNotionStore = createStore<NotionStoreType>()(() => ({
     database: [],
     block: [],
 }));

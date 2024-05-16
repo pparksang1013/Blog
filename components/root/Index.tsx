@@ -1,10 +1,10 @@
-import { PostingFeed } from "./PostingFeed";
+import { BlogFeed } from "./BlogFeed";
 import { RootBox } from "./RootBox";
 
 export const Root = () => {
     return (
         <RootBox>
-            <PostingFeed />
+            <BlogFeed />
         </RootBox>
     );
 };

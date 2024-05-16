@@ -1,6 +1,7 @@
 import { Client } from "@notionhq/client";
 import { QueryDatabaseResponse, ListBlockChildrenResponse } from "@notionhq/client/build/src/api-endpoints";
 import { NotionDatabaseType } from "@/type/notionDatabaseType";
+
 import useNotionStore from "@/store/notionStore";
 
 export default async function notion(endpoint: string, id?: string) {
@@ -12,6 +13,12 @@ export default async function notion(endpoint: string, id?: string) {
         case "databases-query":
             const databaseRes: QueryDatabaseResponse = await notion_auth.databases.query({
                 database_id: process.env.NOTION_DB!,
+                filter: {
+                    property: "Posting",
+                    checkbox: {
+                        equals: true,
+                    },
+                },
             });
 
             const databaseObject: NotionDatabaseType[] = databaseRes.results.map((ele: any) => {
@@ -21,7 +28,7 @@ export default async function notion(endpoint: string, id?: string) {
                     pageId: ele.id,
                     keyword: ele.properties.Keyword.rich_text[0].plain_text,
                     date: ele.created_time,
-                    tags: ele.properties.tag.multi_select,
+                    tags: ele.properties.Tag.multi_select,
                 };
             });
 

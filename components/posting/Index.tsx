@@ -1,29 +1,23 @@
-import { allPosts, Post } from "@/.contentlayer/generated";
+import useNotionStore from "@/store/notionStore";
+import notion from "@/api/notion";
+import { NotionDatabaseType } from "@/type/notionDatabaseType";
 
 // COMP
 import { PostingBox } from "./PostingBox";
 import { PostingContents } from "./PostingContents";
 
-export function generateStaticParams() {
-    const staticPath = allPosts.map((post: Post) => {
-        return post._raw.flattenedPath;
+export const Posting = async ({ params }: { params: { slug: string } }) => {
+    await notion("databases-query");
+
+    const findNotionId = useNotionStore.getState().database.find((ele: NotionDatabaseType) => {
+        return params.slug === ele.id;
     });
 
-    return staticPath;
-}
-
-export const PostingComp = ({ params }: { params: { slug: string } }) => {
-    const postingObj = allPosts.find((post: Post) => {
-        return params.slug === post._raw.sourceFileName.replace(".mdx", "");
-    });
-
-    if (!postingObj) {
-        return;
-    }
+    await notion("retrieve-block-children", findNotionId?.pageId);
 
     return (
         <PostingBox>
-            <PostingContents posting={postingObj} />
+            <PostingContents title={findNotionId?.title} />
         </PostingBox>
     );
 };

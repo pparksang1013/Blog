@@ -1,5 +1,5 @@
-import { styles } from "./style/postingBoxStyle.css";
+import { postingBoxStyle } from "./style/postingBox.css";
 
 export const PostingBox = ({ children }: { children: React.ReactNode }) => {
-    return <main className={styles.box}>{children}</main>;
+    return <div className={postingBoxStyle.box}>{children}</div>;
 };

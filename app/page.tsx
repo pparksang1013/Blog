@@ -1,6 +1,15 @@
-import { MainPage } from "@/page/MainPage";
-import "../components/app/style/globalStyle.css";
+import { Root } from "@/components/root/Index";
+import notion from "@/api/notion";
+import "@/components/app/style/globalStyle.css";
 
-export default function Home() {
-    return <MainPage />;
+async function Home() {
+    await notion("databases-query");
+
+    return (
+        <>
+            <Root />
+        </>
+    );
 }
+
+export default Home;

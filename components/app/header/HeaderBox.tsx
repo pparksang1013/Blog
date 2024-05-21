@@ -1,5 +1,5 @@
-import { styles } from "./style/headerBoxStyle.css";
+import { headerStyle } from "./style/header.css";
 
 export const HeaderBox = ({ children }: { children: React.ReactNode }) => {
-    return <header className={styles.box}>{children}</header>;
+    return <div className={headerStyle.box}>{children}</div>;
 };

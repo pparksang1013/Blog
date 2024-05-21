@@ -1,10 +1,10 @@
 import { HeaderBox } from "./HeaderBox";
-import { HeaderLogo } from "./HeaderLogo";
+import { Logo } from "./Logo";
 
-export const HeaderComp = () => {
+export const Header = () => {
     return (
         <HeaderBox>
-            <HeaderLogo />
+            <Logo />
         </HeaderBox>
     );
 };

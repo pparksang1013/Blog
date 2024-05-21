@@ -1,4 +1,5 @@
-import { HeaderComp } from "@/components/app/header/Index";
+import { Header } from "@/components/app/header/Index";
+import "devicon/devicon.min.css";
 
 export const metadata = {
     title: "Blog",
@@ -12,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="favicon" href="./favicon.ico" />
             </head>
             <body>
-                <HeaderComp />
+                <Header />
                 {children}
             </body>
         </html>

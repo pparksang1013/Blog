@@ -6,9 +6,6 @@ export const Tags = ({ tags }: { tags: TagType[] }) => {
         let setColorTag;
 
         switch (ele.color) {
-            case "gray":
-                setColorTag = tagsStyle.grayLi;
-                break;
             case "brown":
                 setColorTag = tagsStyle.brownLi;
                 break;
@@ -32,6 +29,9 @@ export const Tags = ({ tags }: { tags: TagType[] }) => {
                 break;
             case "red":
                 setColorTag = tagsStyle.redLi;
+                break;
+            case "default":
+                setColorTag = tagsStyle.defaultLi;
                 break;
         }
         return (

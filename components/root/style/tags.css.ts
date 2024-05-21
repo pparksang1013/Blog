@@ -4,18 +4,18 @@ import { style } from "@vanilla-extract/css";
 const ul = style({
     display: "flex",
     gap: 6,
-    marginTop: 4,
+    marginTop: 8,
 });
 
 const commonLi = style({
     listStyle: "none",
     fontSize: 12,
-    padding: "0 5px 1.5px",
+    padding: "0 5px 1.2px",
     borderRadius: 2,
     fontWeight: 400,
 });
 
-const grayLi = style([
+const defaultLi = style([
     commonLi,
     {
         backgroundColor: globalTheme.colors.notion.background.gray,
@@ -89,7 +89,7 @@ const redLi = style([
 
 export const tagsStyle = {
     ul,
-    grayLi,
+    defaultLi,
     brownLi,
     orangeLi,
     yellowLi,

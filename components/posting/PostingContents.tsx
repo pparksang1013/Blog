@@ -1,14 +1,31 @@
 import useNotionStore from "@/store/notionStore";
 import { contentsParsing } from "./child";
+import * as postingContentsStyle from "./style/postingContents.css";
 
-export const PostingContents = () => {
+export const PostingContents = ({ title }: { title?: string }) => {
     const groupedContents = useNotionStore.getState().block.results.reduce((acc: any, ele: any) => {
         if (ele.type === "bulleted_list_item" || ele.type === "numbered_list_item") {
-            const lastGroup = acc[acc.length - 1];
-            if (lastGroup && lastGroup.type === ele.type) {
-                lastGroup.lists.push(ele[ele.type].rich_text[0].plain_text);
+            const listGroup = acc[acc.length - 1];
+
+            if (listGroup && listGroup.type === ele.type) {
+                listGroup.lists.push({
+                    text: ele[ele.type].rich_text[0].plain_text,
+                    has_children: ele.has_children,
+                    id: ele.id,
+                    [ele.type]: ele[ele.type],
+                });
             } else {
-                acc.push({ type: ele.type, items: ele, lists: [ele[ele.type].rich_text[0].plain_text] });
+                acc.push({
+                    type: ele.type,
+                    lists: [
+                        {
+                            text: ele[ele.type].rich_text[0].plain_text,
+                            has_children: ele.has_children,
+                            id: ele.id,
+                            [ele.type]: ele[ele.type],
+                        },
+                    ],
+                });
             }
         } else {
             acc.push(ele);
@@ -16,7 +33,7 @@ export const PostingContents = () => {
         return acc;
     }, []);
 
-    const contents = groupedContents.map((ele: any) => {
+    const contents = groupedContents.map((ele: any, i: number) => {
         switch (ele.type) {
             case "paragraph":
                 return <contentsParsing.Paragraph text={ele.paragraph} />;
@@ -35,5 +52,10 @@ export const PostingContents = () => {
         }
     });
 
-    return <>{contents}</>;
+    return (
+        <>
+            <h1 className={postingContentsStyle.title}>{title}</h1>
+            {contents}
+        </>
+    );
 };

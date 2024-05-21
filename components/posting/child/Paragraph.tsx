@@ -1,27 +1,26 @@
 import { RichTextType } from "@/type/notionRichtextType";
-import { postingContentsStyle } from "../style/postingContents.css";
-import { notionColorStyle } from "@/style/notionColor.css";
+import * as postingContentsStyle from "../style/postingContents.css";
+import { pAnnotationStyle } from "../style/annotations.css";
 
 export const Paragraph = ({ text }: { text: RichTextType }) => {
     if (!text.rich_text[0]) {
         return <br />;
     }
 
-    let textStyleArr = [postingContentsStyle.p.basic];
+    let textStyleArr = [postingContentsStyle.p];
 
-    // 타입 단언
     for (const key in text.rich_text[0].annotations) {
         if (text.rich_text[0].annotations[key] === true) {
-            const textStyle = `${postingContentsStyle.p[key as keyof typeof postingContentsStyle.p]}`;
-            textStyleArr.push(textStyle);
-        } else if (key === "color") {
-            const colorValue = text.rich_text[0].annotations[key];
+            const annotation = pAnnotationStyle[key as keyof typeof pAnnotationStyle];
 
-            if (colorValue !== "default") {
-                const colorStyle = notionColorStyle[colorValue];
-                textStyleArr.push(colorStyle);
-            }
+            textStyleArr.push(annotation);
         }
+    }
+
+    if (text.rich_text[0].annotations.color !== "default") {
+        const keyColor = text.rich_text[0].annotations.color;
+
+        textStyleArr.push(pAnnotationStyle[keyColor as keyof typeof pAnnotationStyle]);
     }
 
     return <p className={`${textStyleArr.join(" ")}`}>{text.rich_text[0].plain_text}</p>;

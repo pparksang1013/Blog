@@ -17,7 +17,7 @@ export const Posting = async ({ params }: { params: { slug: string } }) => {
 
     return (
         <PostingBox>
-            <PostingContents />
+            <PostingContents title={findNotionId?.title} />
         </PostingBox>
     );
 };

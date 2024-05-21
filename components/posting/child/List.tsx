@@ -1,32 +1,34 @@
-function Ol({ text }: { text: any }) {
-    return (
-        <ol>
-            {text.lists.map((ele: string) => (
-                <li>{ele}</li>
-            ))}
-        </ol>
-    );
-}
+import * as postingContentsStyle from "../style/postingContents.css";
+import notion from "@/api/notion";
+import * as ListType from "@/components/posting/type/listType";
 
-function Ul({ text }: { text: any }) {
+const getChildListFunc = async (ele: ListType.ListsType, type: string) => {
+    const getNotion = await notion();
+
+    const blockList = await getNotion?.blocks.children.list({
+        block_id: ele.id,
+    });
+
+    const childList = blockList?.results.map((ele: any) => {
+        return <li className={postingContentsStyle.li}>{ele[type].rich_text[0].plain_text}</li>;
+    });
+
+    return <ul className={postingContentsStyle.childUl}>{childList}</ul>;
+};
+
+async function Ul({ text }: { text: ListType.ListPropType }) {
     return (
-        <ul>
-            {text.lists.map((ele: string) => (
-                <li>{ele}</li>
+        <ul className={postingContentsStyle.ul}>
+            {text.lists.map((ele: ListType.ListsType) => (
+                <>
+                    <li className={postingContentsStyle.li}>{ele.text}</li>
+                    {ele.has_children && getChildListFunc(ele, text.type)}
+                </>
             ))}
         </ul>
     );
 }
 
-export const List = ({ text }: { text: any }) => {
-    console.log(text);
-
-    switch (text.type) {
-        case "bulleted_list_item":
-            return <Ul text={text} />;
-        case "numbered_list_item":
-            return <Ol text={text} />;
-        default:
-            return null;
-    }
+export const List = async ({ text }: { text: ListType.ListPropType }) => {
+    return <Ul text={text} />;
 };

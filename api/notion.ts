@@ -4,10 +4,14 @@ import { NotionDatabaseType } from "@/type/notionDatabaseType";
 
 import useNotionStore from "@/store/notionStore";
 
-export default async function notion(endpoint: string, id?: string) {
+export default async function notion(endpoint?: string, id?: string) {
     const notion_auth = new Client({
         auth: process.env.NOTION_KEY,
     });
+
+    if (!endpoint) {
+        return notion_auth;
+    }
 
     switch (endpoint) {
         case "databases-query":
@@ -41,10 +45,22 @@ export default async function notion(endpoint: string, id?: string) {
                 block_id: id!,
             });
 
-            useNotionStore.setState({ block: blockRes });
+            let { next_cursor, has_more } = blockRes;
+
+            while (has_more && next_cursor) {
+                const nextRes: ListBlockChildrenResponse = await notion_auth.blocks.children.list({
+                    block_id: id!,
+                    start_cursor: next_cursor,
+                });
+
+                blockRes.results.push(...nextRes.results);
+
+                has_more = nextRes.has_more;
+                next_cursor = nextRes.next_cursor;
+            }
+
+            useNotionStore.setState({ block: { ...blockRes, has_more: false, next_cursor: null } });
 
             break;
     }
-
-    return notion;
 }

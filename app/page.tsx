@@ -5,11 +5,7 @@ import "@/components/app/style/globalStyle.css";
 async function Home() {
     await notion("databases-query");
 
-    return (
-        <>
-            <Root />
-        </>
-    );
+    return <></>;
 }
 
 export default Home;

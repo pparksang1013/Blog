@@ -1,5 +1,14 @@
+// STYLE
 import { h1Style } from "@/app/style/(posting)/heading.css";
+// COMP
+import StyledText from "./StyledText";
 
-export const H1 = ({ text }: { text: any }) => {
-    return <h1 className={h1Style}>{text.rich_text[0].plain_text}</h1>;
+export const H1 = ({ h1 }: { h1: any }) => {
+    return (
+        <h1 className={h1Style.h1}>
+            {h1.rich_text.map((ele: any) => {
+                return <StyledText text={ele.plain_text} annotations={ele.annotations} style={h1Style} />;
+            })}
+        </h1>
+    );
 };

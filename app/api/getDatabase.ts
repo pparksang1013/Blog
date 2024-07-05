@@ -22,6 +22,12 @@ export const getDatabase = cache(async () => {
                     equals: true,
                 },
             },
+            sorts: [
+                {
+                    property: "Date",
+                    direction: "descending",
+                },
+            ],
         })
         .then((database) => {
             return database.results.map((ele: any) => {

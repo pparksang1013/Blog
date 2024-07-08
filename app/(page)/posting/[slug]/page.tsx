@@ -4,6 +4,7 @@ import { getBlockChildren } from "@/app/api/getBlockChildren";
 // COMP
 import { Box } from "@/app/components/(common)/Box";
 import { Posting } from "@/app/components/(posting)/Posting";
+import { PostingInfo } from "@/app/components/(posting)/PostingInfo";
 
 export async function generateStaticParams() {
     const notionDatabase = await getDatabase();
@@ -18,10 +19,15 @@ async function page({ params }: { params: { slug: string } }) {
         return params.slug === ele.id;
     });
 
+    // findId type이 undefined일 경우
+    const title = findId?.title ?? "NO TITLE";
+    const keyword = findId?.keyword ?? "NO KEYWORD";
+    const tags = findId?.tags ? findId?.tags : [];
     const resConetents = await getBlockChildren(findId?.pageId);
 
     return (
         <Box styleValue="postingBox">
+            <PostingInfo title={title} keyword={keyword} tags={tags} />
             <Posting contents={resConetents} />
         </Box>
     );

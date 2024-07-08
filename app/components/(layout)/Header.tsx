@@ -7,10 +7,12 @@ import logo from "@/public/img/logo.png";
 
 export const Header = () => {
     return (
-        <Box styleValue="headerBox">
-            <Link href="/">
-                <Image src={logo} alt="logo" width={38} />
-            </Link>
-        </Box>
+        <header>
+            <Box styleValue="headerBox">
+                <Link href="/">
+                    <Image src={logo} alt="logo" width={38} />
+                </Link>
+            </Box>
+        </header>
     );
 };

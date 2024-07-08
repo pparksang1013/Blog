@@ -15,7 +15,7 @@ const ChildList = async ({ id }: { id: string }) => {
         <ul className={listStyle.childUl}>
             {getChildList.results.map((ele: any) => {
                 return (
-                    <li>
+                    <li className={listStyle.li}>
                         {ele[ele.type].rich_text.map((text: any) => {
                             return (
                                 <StyledText text={text.plain_text} annotations={text.annotations} style={listStyle} />

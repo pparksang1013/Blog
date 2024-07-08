@@ -12,7 +12,7 @@ import { NotionImage } from "./NotionImage";
 import { CallOut } from "./CallOut";
 import { Code } from "./Code";
 // STYLE
-import { postingContentStyle } from "@/app/style/(posting)/posting_contents.css";
+import { postingStyle } from "@/app/style/(posting)/posting.css";
 
 export const Posting = ({ contents }: { contents: ListBlockChildrenResponse }) => {
     const processingContents = groupedList(contents);
@@ -42,5 +42,5 @@ export const Posting = ({ contents }: { contents: ListBlockChildrenResponse }) =
         }
     });
 
-    return <main className={postingContentStyle.main}>{parsing}</main>;
+    return <main className={postingStyle.main}>{parsing}</main>;
 };

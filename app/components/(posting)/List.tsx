@@ -13,9 +13,9 @@ const ChildList = async ({ id }: { id: string }) => {
 
     return (
         <ul className={listStyle.childUl}>
-            {getChildList.results.map((ele: any) => {
+            {getChildList.results.map((ele: any, idx: number) => {
                 return (
-                    <li className={listStyle.li}>
+                    <li className={listStyle.li} key={idx}>
                         {ele[ele.type].rich_text.map((text: any) => {
                             return (
                                 <StyledText text={text.plain_text} annotations={text.annotations} style={listStyle} />
@@ -28,9 +28,9 @@ const ChildList = async ({ id }: { id: string }) => {
     );
 };
 
-async function Ul({ list }: { list: ListTypeInterface }) {
+async function Ul({ list, idx }: { list: ListTypeInterface; idx: number }) {
     return (
-        <ul className={listStyle.ul}>
+        <ul className={listStyle.ul} key={idx}>
             {list.grouped_list.map((ele, i) => {
                 return (
                     <>
@@ -53,8 +53,8 @@ async function Ul({ list }: { list: ListTypeInterface }) {
     );
 }
 
-export const List = async ({ list, type }: { list: ListTypeInterface; type: string }) => {
+export const List = async ({ list, type, idx }: { list: ListTypeInterface; type: string; idx: number }) => {
     if (type === "bulleted_list_item") {
-        return <Ul list={list} />;
+        return <Ul list={list} idx={idx} />;
     }
 };

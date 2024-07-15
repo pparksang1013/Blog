@@ -16,7 +16,7 @@ async function BlogFeed() {
 
         return (
             <>
-                <Link href={`posting/${ele.id}`} className={feedStyle.link}>
+                <Link href={`posting/${ele.id}`} className={feedStyle.link} key={ele.id}>
                     <Keyword keyword={ele.keyword} />
                     <h1 className={feedStyle.title}>{ele.title}</h1>
                     <p className={feedStyle.date}>{date}</p>

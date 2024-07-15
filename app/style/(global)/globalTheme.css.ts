@@ -1,11 +1,6 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const globalTheme = createGlobalTheme(":root", {
-    fonts: {
-        mainfont: `pretendard, serif`,
-        hack: "hack, suit",
-        gogh: "gogh",
-    },
     colors: {
         primary: "#fca61d",
         black: "#262626",
@@ -18,7 +13,7 @@ export const globalTheme = createGlobalTheme(":root", {
                 gray: "#9B9A97",
                 brown: "#64473A",
                 orange: "#D9730D",
-                yellow: "#DFAB01",
+                yellow: "#F2D22E",
                 green: "#0F7B6C",
                 blue: "#0B6E99",
                 purple: "#6940A5",

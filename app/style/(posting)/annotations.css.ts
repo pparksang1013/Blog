@@ -1,61 +1,76 @@
 import { globalTheme } from "@/app/style/(global)/globalTheme.css";
-import { style, styleVariants } from "@vanilla-extract/css";
-import * as colors from "@/app/style/(global)/notionColor.css";
+import { style } from "@vanilla-extract/css";
 
-const boldStyle = style({
-    fontWeight: 900,
-    color: `rgba(${globalTheme.rgb.black}, 0.9)`,
-});
-
-const italicStyle = style({});
-
-const striketStyle = style({});
-
-const underLineStyle = style({});
-
-const codeStyle = style({});
-
-export const annotationObj = {
-    bold: boldStyle,
-    italic: italicStyle,
-    strikethrough: striketStyle,
-    underline: underLineStyle,
-    code: codeStyle,
-    blue: colors.blue,
-    blue_background: colors.blue_background,
-    brown: colors.brown,
-    brown_background: colors.brown_background,
-    gray: colors.gray,
-    gray_background: colors.gray_background,
-    green: colors.green,
-    green_background: colors.green_background,
-    orange: colors.orange,
-    orange_background: colors.orange_background,
-    pink: colors.pink,
-    pink_background: colors.pink_background,
-    purple: colors.purple,
-    purple_background: colors.purple_background,
-    red: colors.red,
-    red_background: colors.red_background,
-    yellow: colors.yellow,
-    yellow_background: colors.yellow_background,
+export const annotationStyle = {
+    // ANNOTATIONS
+    bold: style({
+        fontWeight: 800,
+        color: `rgba(${globalTheme.rgb.black}, 0.9)`,
+    }),
+    italic: style({
+        fontStyle: "italic",
+    }),
+    strikethrough: style({
+        textDecoration: "line-through",
+    }),
+    underline: style({ textDecoration: "underline", textUnderlineOffset: 4, textDecorationThickness: 0.7 }),
+    code: style({
+        color: globalTheme.colors.notion.text.red,
+        backgroundColor: `rgba(${globalTheme.rgb.gray}, 0.2)`,
+        fontSize: "0.9em",
+        padding: "2px 4px",
+    }),
+    // COLOR
+    blue: style({ color: globalTheme.colors.notion.text.blue }),
+    blue_background: style({
+        backgroundColor: globalTheme.colors.notion.background.blue,
+    }),
+    brown: style({
+        color: globalTheme.colors.notion.text.brown,
+    }),
+    brown_background: style({
+        backgroundColor: globalTheme.colors.notion.background.brown,
+    }),
+    gray: style({
+        color: globalTheme.colors.notion.text.gray,
+    }),
+    gray_background: style({
+        backgroundColor: globalTheme.colors.notion.background.gray,
+    }),
+    green: style({
+        color: globalTheme.colors.notion.text.green,
+    }),
+    green_background: style({
+        backgroundColor: globalTheme.colors.notion.background.green,
+    }),
+    orange: style({
+        color: globalTheme.colors.notion.text.orange,
+    }),
+    orange_background: style({
+        backgroundColor: globalTheme.colors.notion.background.orange,
+    }),
+    pink: style({
+        color: globalTheme.colors.notion.text.pink,
+    }),
+    pink_background: style({
+        backgroundColor: globalTheme.colors.notion.background.pink,
+    }),
+    purple: style({
+        color: globalTheme.colors.notion.text.purple,
+    }),
+    purple_background: style({
+        backgroundColor: globalTheme.colors.notion.background.purple,
+    }),
+    red: style({
+        color: globalTheme.colors.notion.text.red,
+    }),
+    red_background: style({
+        backgroundColor: globalTheme.colors.notion.background.red,
+    }),
+    yellow: style({
+        color: globalTheme.colors.notion.text.yellow,
+    }),
+    yellow_background: style({
+        backgroundColor: globalTheme.colors.notion.background.yellow,
+    }),
 };
-
-const p = style({
-    width: "fit-content",
-    padding: "0 4px",
-    lineHeight: 1.4,
-});
-
-const heading = style({
-    width: "fit-content",
-    padding: "0 4px",
-});
-
-export const pAnnotationStyle = styleVariants(annotationObj, (value) => {
-    return [p, value];
-});
-
-export const headingAnnotationStyle = styleVariants(annotationObj, (value) => {
-    return [heading, value];
-});

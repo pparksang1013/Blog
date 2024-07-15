@@ -1,13 +1,9 @@
 // STYLE
 import { tagStyle } from "@/app/style/(common)/tag.css";
+// TYPE
+import { TagInterface } from "@/app/types/tag";
 
-interface TagType {
-    id: string;
-    name: string;
-    color: string;
-}
-
-export const Tag = ({ tags }: { tags: TagType[] }) => {
+export const Tag = ({ tags }: { tags: TagInterface[] }) => {
     const tag = tags.map((ele, i) => {
         let setColorTag;
 

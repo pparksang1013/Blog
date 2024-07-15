@@ -22,6 +22,12 @@ export const getDatabase = cache(async () => {
                     equals: true,
                 },
             },
+            sorts: [
+                {
+                    property: "Date",
+                    direction: "descending",
+                },
+            ],
         })
         .then((database) => {
             return database.results.map((ele: any) => {
@@ -30,7 +36,7 @@ export const getDatabase = cache(async () => {
                     id: ele.properties.ID.unique_id.prefix + ele.properties.ID.unique_id.number,
                     pageId: ele.id,
                     keyword: ele.properties.Keyword.rich_text[0].plain_text,
-                    date: ele.last_edited_time,
+                    date: ele.properties.Date.date.start,
                     tags: ele.properties.Tag.multi_select,
                 };
             });

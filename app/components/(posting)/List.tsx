@@ -2,30 +2,59 @@
 import { listStyle } from "@/app/style/(posting)/list.css";
 // API
 import { getBlockChildren } from "@/app/api/getBlockChildren";
+// TYPE
+import { ListTypeInterface } from "@/app/types/list";
+import { ListBlockChildrenResponse } from "@notionhq/client/build/src/api-endpoints";
+// COMP
+import StyledText from "./StyledText";
 
-const getChildListFunc = async (ele: any, type: string) => {
-    const blockList = await getBlockChildren(ele.id);
-    const childList = blockList?.results.map((ele: any) => {
-        const richText = ele[ele.type]?.rich_text;
-        const plainText = richText && richText.length > 0 ? richText[0].plain_text : "";
-        return <li className={listStyle.li}>{plainText}</li>;
-    });
-    return <ul className={listStyle.childUl}>{childList}</ul>;
+const ChildList = async ({ id }: { id: string }) => {
+    const getChildList: ListBlockChildrenResponse = await getBlockChildren(id);
+
+    return (
+        <ul className={listStyle.childUl}>
+            {getChildList.results.map((ele: any, idx: number) => {
+                return (
+                    <li className={listStyle.li} key={idx}>
+                        {ele[ele.type].rich_text.map((text: any) => {
+                            return (
+                                <StyledText text={text.plain_text} annotations={text.annotations} style={listStyle} />
+                            );
+                        })}
+                    </li>
+                );
+            })}
+        </ul>
+    );
 };
 
-async function Ul({ text }: { text: any }) {
+async function Ul({ list, idx }: { list: ListTypeInterface; idx: number }) {
     return (
-        <ul className={listStyle.ul}>
-            {text.lists.map((ele: any) => (
-                <>
-                    <li className={listStyle.li}>{ele.text}</li>
-                    {ele.has_children && getChildListFunc(ele, text.type)}
-                </>
-            ))}
+        <ul className={listStyle.ul} key={idx}>
+            {list.grouped_list.map((ele, i) => {
+                return (
+                    <>
+                        <li key={i} className={listStyle.li}>
+                            {ele.bulleted_list_item.map((text) => {
+                                return (
+                                    <StyledText
+                                        text={text.plain_text}
+                                        annotations={text.annotations}
+                                        style={listStyle}
+                                    />
+                                );
+                            })}
+                        </li>
+                        {ele.has_children && <ChildList id={ele.id} />}
+                    </>
+                );
+            })}
         </ul>
     );
 }
 
-export const List = async ({ text }: { text: any }) => {
-    return <Ul text={text} />;
+export const List = async ({ list, type, idx }: { list: ListTypeInterface; type: string; idx: number }) => {
+    if (type === "bulleted_list_item") {
+        return <Ul list={list} idx={idx} />;
+    }
 };

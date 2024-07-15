@@ -1,11 +1,30 @@
-import { globalFontFace } from "@vanilla-extract/css";
+import { globalFontFace, style } from "@vanilla-extract/css";
 
-globalFontFace("pretendard", {
-    src: `url('/font/PretendardVariable.woff2') format('woff2')`,
+globalFontFace("mono", {
+    src: `url('/font/MonaspaceKryptonVarVF.ttf') format('truetype')`,
     fontWeight: "variable",
 });
 
-globalFontFace("hack", {
-    src: `url('/font/Hack-Regular.ttf') format('truetype')`,
-    fontWeight: 400,
-});
+globalFontFace("line", [
+    {
+        src: `url('/font/LINESeedKR-Th.woff2') format('woff2')`,
+        fontWeight: "100",
+    },
+    {
+        src: `url('/font/LINESeedKR-Rg.woff2') format('woff2')`,
+        fontWeight: "400",
+    },
+    {
+        src: `url('/font/LINESeedKR-Bd.woff2') format('woff2')`,
+        fontWeight: "900",
+    },
+]);
+
+export const font = {
+    coding: style({
+        fontFamily: "mono",
+    }),
+    line: style({
+        fontFamily: "line, serif",
+    }),
+};

@@ -5,7 +5,7 @@ globalStyle("*", {
     margin: 0,
     padding: 0,
     boxSizing: "border-box",
-    fontFamily: globalTheme.fonts.mainfont,
+    fontFamily: "line",
 });
 
 globalStyle("html body", {
@@ -15,4 +15,14 @@ globalStyle("html body", {
 globalStyle("a", {
     textDecoration: "none",
     color: globalTheme.colors.black,
+});
+
+globalStyle("code", {
+    fontFamily: "mono",
+    lineHeight: 1.44,
+    color: "rgb(229, 231, 235)",
+});
+
+globalStyle("code *", {
+    fontFamily: "mono",
 });

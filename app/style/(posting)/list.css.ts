@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 import styleVariantsUtil from "@/app/util/(posting)/setStyleVariants";
 
 const ul = style({
-    marginTop: 8,
+    margin: "8px 0",
 });
 
 const childUl = style({

@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 const icon = style({
-    fontSize: 22,
+    fontSize: 30,
     opacity: 0.7,
 });
 

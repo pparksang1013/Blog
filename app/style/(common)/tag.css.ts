@@ -1,18 +1,21 @@
 import { globalTheme } from "@/app/style/(global)/globalTheme.css";
 import { style } from "@vanilla-extract/css";
+import { font } from "../(global)/globalFont.css";
 
 const ul = style({
     display: "flex",
     gap: 6,
     marginTop: 8,
+    flexWrap: "wrap",
 });
 
 const commonLi = style({
     listStyle: "none",
     fontSize: 12,
-    padding: "0 5px 1.2px",
+    padding: "1px 5px 1.2px",
     borderRadius: 2,
     fontWeight: 400,
+    fontFamily: font.line,
 });
 
 const defaultLi = style([

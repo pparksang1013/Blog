@@ -4,13 +4,22 @@ import { style } from "@vanilla-extract/css";
 export const annotationStyle = {
     // ANNOTATIONS
     bold: style({
-        fontWeight: 900,
+        fontWeight: 800,
         color: `rgba(${globalTheme.rgb.black}, 0.9)`,
     }),
-    italic: style({}),
-    strikethrough: style({}),
-    underline: style({}),
-    code: style({}),
+    italic: style({
+        fontStyle: "italic",
+    }),
+    strikethrough: style({
+        textDecoration: "line-through",
+    }),
+    underline: style({ textDecoration: "underline", textUnderlineOffset: 4, textDecorationThickness: 0.7 }),
+    code: style({
+        color: globalTheme.colors.notion.text.red,
+        backgroundColor: `rgba(${globalTheme.rgb.gray}, 0.2)`,
+        fontSize: "0.9em",
+        padding: "2px 4px",
+    }),
     // COLOR
     blue: style({ color: globalTheme.colors.notion.text.blue }),
     blue_background: style({

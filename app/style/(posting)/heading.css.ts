@@ -7,11 +7,17 @@ const h1 = style({
     fontSize: "3rem",
     fontWeight: 900,
     color: `rgba(${globalTheme.rgb.black}, 0.9)`,
+    WebkitTextStroke: 1,
+    letterSpacing: -1,
 });
 
-const h2 = style({});
+const h2 = style({
+    color: `rgba(${globalTheme.rgb.black}, 0.9)`,
+});
 
-const h3 = style({});
+const h3 = style({
+    color: `rgba(${globalTheme.rgb.black}, 0.9)`,
+});
 
 const annotations = styleVariantsUtil();
 

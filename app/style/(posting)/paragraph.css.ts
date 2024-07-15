@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { font } from "../(global)/globalFont.css";
 // UTIL
 import styleVariantsUtil from "@/app/util/(posting)/setStyleVariants";
 

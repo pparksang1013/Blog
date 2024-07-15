@@ -8,12 +8,13 @@ const StyledText = ({
     style: any;
 }) => {
     const classNameArr: string[] = [];
+
     for (const key in annotations) {
         if (annotations[key] === true) {
             classNameArr.push(style.annotations[key as keyof typeof annotations]);
         }
 
-        if (annotations.color !== "default") {
+        if (key === "color") {
             classNameArr.push(style.annotations[annotations.color as keyof typeof annotations.color]);
         }
     }

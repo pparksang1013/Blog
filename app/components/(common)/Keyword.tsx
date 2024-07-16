@@ -7,6 +7,9 @@ export const Keyword = ({ keyword }: { keyword: string }) => {
             case "javascript":
                 return "devicon-javascript-plain";
 
+            case "react":
+                return "devicon-react-original";
+
             default:
                 return null;
         }

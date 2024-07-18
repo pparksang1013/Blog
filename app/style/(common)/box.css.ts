@@ -19,6 +19,7 @@ const postingBox = style({
     display: "flex",
     gap: 20,
     overflow: "hidden",
+    minHeight: calc.subtract("100vh", "150px"),
     maxHeight: calc.subtract("100vh", "150px"),
 });
 

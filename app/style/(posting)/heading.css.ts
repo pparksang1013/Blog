@@ -9,6 +9,7 @@ const h1 = style({
     color: `rgba(${globalTheme.rgb.black}, 0.9)`,
     WebkitTextStroke: 1,
     letterSpacing: -1,
+    margin: "16px 0 2px",
 });
 
 const h2 = style({

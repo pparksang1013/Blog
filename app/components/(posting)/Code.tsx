@@ -1,6 +1,7 @@
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 import plaintext from "highlight.js/lib/languages/plaintext";
+import typescript from "highlight.js/lib/languages/typescript";
 import "highlight.js/styles/atom-one-dark-reasonable.css";
 // STYLE
 import { codeStyle } from "@/app/style/(posting)/code.css";
@@ -20,6 +21,20 @@ export const Code = async ({ code, idx }: { code: any; idx: number }) => {
                     />
                 </pre>
             );
+
+        case "typescript":
+            hljs.registerLanguage("typescript", typescript);
+            myHtml = hljs.highlight(myCode, { language: "typescript" }).value;
+            return (
+                <pre key={idx} className={codeStyle.pre}>
+                    <code
+                        dangerouslySetInnerHTML={{
+                            __html: myHtml,
+                        }}
+                    />
+                </pre>
+            );
+
         case "plain text":
             hljs.registerLanguage("plaintext", plaintext);
             myHtml = hljs.highlight(myCode, { language: "plaintext" }).value;

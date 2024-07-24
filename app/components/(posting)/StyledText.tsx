@@ -14,8 +14,8 @@ const StyledText = ({
             classNameArr.push(style.annotations[key as keyof typeof annotations]);
         }
 
-        if (key === "color") {
-            classNameArr.push(style.annotations[annotations.color as keyof typeof annotations.color]);
+        if (annotations.color !== "default" && key === "color") {
+            classNameArr.push(style.annotations[annotations.color as keyof typeof annotations]);
         }
     }
 

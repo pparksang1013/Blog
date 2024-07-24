@@ -2,28 +2,14 @@
 import { keywordStyle } from "@/app/style/(common)/keyword.css";
 
 export const Keyword = ({ keyword }: { keyword: string }) => {
-    function setIcon() {
-        switch (keyword) {
-            case "javascript":
-                return "devicon-javascript-plain";
+    switch (keyword) {
+        case "javascript":
+            return "devicon-javascript-plain";
 
-            case "react":
-                return "devicon-react-original";
+        case "react":
+            return <span className={keywordStyle.react}></span>;
 
-            default:
-                return null;
-        }
+        default:
+            return null;
     }
-
-    const icon = setIcon();
-
-    return (
-        <>
-            {icon ? (
-                <i className={`${icon} ${keywordStyle.icon}`}></i>
-            ) : (
-                <span className={keywordStyle.posting}>✨</span>
-            )}
-        </>
-    );
 };

@@ -1,16 +1,19 @@
+import Link from "next/link";
 // COMP
 import { Box } from "../(common)/Box";
-
-import Link from "next/link";
-import Image from "next/image";
-import logo from "@/public/img/logo.png";
+// STYLE
+import { logoStyle } from "@/app/style/(layout)/header.css";
 
 export const Header = () => {
     return (
         <header>
             <Box styleValue="headerBox">
                 <Link href="/">
-                    <Image src={logo} alt="logo" width={38} />
+                    <p className={logoStyle.logo}>
+                        we <br />
+                        never <br />
+                        get old
+                    </p>
                 </Link>
             </Box>
         </header>

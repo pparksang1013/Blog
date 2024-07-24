@@ -6,7 +6,7 @@ import styleVariantsUtil from "@/app/util/(posting)/setStyleVariants";
 const box = style({
     border: `1px solid rgba(${globalTheme.rgb.black}, 0.2)`,
     padding: 10,
-    margin: "4px 0",
+    margin: "20px 0",
     borderRadius: 4,
     display: "flex",
     gap: 14,

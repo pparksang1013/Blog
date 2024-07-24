@@ -11,8 +11,8 @@ const childUl = style({
 });
 
 const li = style({
-    fontSize: 16.8,
-    lineHeight: 1.68,
+    fontSize: 17.8,
+    lineHeight: 1.78,
     listStylePosition: "inside",
 });
 

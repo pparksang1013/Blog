@@ -1,23 +1,27 @@
 import { style } from "@vanilla-extract/css";
 import { globalTheme } from "../(global)/globalTheme.css";
 
-const aside = style({
-    minWidth: 300,
-    maxWidth: 300,
+const wrapper = style({
     padding: "20px 0 10px 0",
-    borderRight: `1px solid rgba(${globalTheme.rgb.gray}, 0.5)`,
+    minWidth: 800,
+    maxWidth: 800,
 });
 
 const title = style({
-    fontSize: "2rem",
-    backgroundColor: `rgba(${globalTheme.rgb.primary}, 0.5)`,
+    fontSize: "4rem",
     color: `rgba(${globalTheme.rgb.black}, 0.9)`,
-    WebkitTextStroke: 1,
-    width: "fit-content",
-    marginTop: 4,
+    WebkitTextStroke: 2,
+    letterSpacing: -2,
+    wordSpacing: 5,
+    margin: "10px 0",
+
+    ":after": {
+        content: ".",
+        color: globalTheme.colors.primary,
+    },
 });
 
 export const infoStyle = {
-    aside,
+    wrapper,
     title,
 };

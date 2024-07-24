@@ -7,6 +7,7 @@ export const globalTheme = createGlobalTheme(":root", {
         gray: "#a6a6a6",
         blue: "#1f4eff",
         green: "#4D7D5F",
+        react: "#0077b6",
 
         notion: {
             text: {

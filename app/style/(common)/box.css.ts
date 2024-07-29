@@ -12,6 +12,7 @@ const headerBox = style({
 });
 
 const blogBox = style({
+    width: 900,
     margin: "20px auto",
 });
 

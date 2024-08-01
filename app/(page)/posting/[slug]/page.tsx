@@ -21,13 +21,12 @@ async function page({ params }: { params: { slug: string } }) {
 
     // findId type이 undefined일 경우
     const title = findId?.title ?? "NO TITLE";
-    const keyword = findId?.keyword ?? "NO KEYWORD";
     const tags = findId?.tags ? findId?.tags : [];
     const resConetents = await getBlockChildren(findId?.pageId);
 
     return (
         <Box styleValue="postingBox">
-            <PostingInfo title={title} keyword={keyword} tags={tags} />
+            <PostingInfo title={title} tags={tags} />
             <Posting contents={resConetents} />
         </Box>
     );

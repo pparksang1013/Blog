@@ -17,7 +17,7 @@ export const annotationStyle = {
     code: style({
         color: globalTheme.colors.notion.text.red,
         backgroundColor: `rgba(${globalTheme.rgb.gray}, 0.2)`,
-        fontSize: "0.9em",
+        fontSize: "0.82em",
         padding: "2px 4px",
     }),
     // COLOR

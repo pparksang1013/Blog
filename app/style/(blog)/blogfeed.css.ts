@@ -1,45 +1,75 @@
 import { globalTheme } from "@/app/style/(global)/globalTheme.css";
 import { style } from "@vanilla-extract/css";
 
-const wrapper = style({
-    display: "flex",
-    gap: 20,
+const left = style({
+    width: "10%",
+});
+
+const feedText = style({
+    fontWeight: 900,
+    fontSize: "1.6rem",
+    letterSpacing: -1,
+    color: `rgba(${globalTheme.rgb.primary}, 0.7)`,
+    marginBottom: 10,
 });
 
 const link = style({
-    flex: 1,
     backgroundColor: "#fff",
-    maxWidth: `calc((1400px / 3) - 30px)`,
-    minHeight: 300,
-    padding: "14px 20px",
-    borderRadius: 6,
-    boxShadow: "1px 1px 4px rgba(0, 0, 0, 0.06), -1px -1px 4px rgba(0, 0, 0, 0.06)",
-    position: "relative",
+    borderRadius: 12,
+    boxShadow: `2px 2px 10px rgba(${globalTheme.rgb.black}, 0.08), -2px -2px 10px rgba(${globalTheme.rgb.black}, 0.08)`,
+    display: "flex",
+    gap: 30,
+    minHeight: 140,
+    padding: "12px 14px",
     border: `1px solid transparent`,
 
     ":hover": {
-        border: `1px solid rgba(${globalTheme.rgb.black}, 0.4)`,
+        border: `1px solid rgba(${globalTheme.rgb.black}, 0.2)`,
     },
+});
+
+const contentsWrapper = style({
+    position: "relative",
+    width: "90%",
 });
 
 const title = style({
     fontWeight: 900,
     fontSize: "2.2rem",
-    color: `rgba(${globalTheme.rgb.black}, 0.9)`,
-    letterSpacing: -0.5,
-    wordSpacing: 4,
-    marginTop: 2,
+    letterSpacing: -1,
+    wordSpacing: 2,
+    backgroundColor: `rgba(255, 255, 255, 1)`,
+});
+
+const arrow = style({
+    fontWeight: 100,
 });
 
 const date = style({
-    fontSize: "0.7em",
+    borderRadius: 50,
+    width: "fit-content",
+    fontSize: "0.6em",
     fontWeight: 900,
-    color: globalTheme.colors.gray,
+    border: "1px solid rgba(0, 0, 0, 0.4)",
+    padding: "3px 10px",
+    marginRight: 8,
+});
+
+const emoji = style({
+    fontSize: "2rem",
+    transform: "scaleX(-1)",
+    position: "absolute",
+    right: 8,
+    bottom: 0,
 });
 
 export const feedStyle = {
-    wrapper,
+    feedText,
+    left,
     link,
     title,
+    arrow,
     date,
+    contentsWrapper,
+    emoji,
 };

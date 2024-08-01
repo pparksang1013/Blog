@@ -5,18 +5,10 @@ globalFontFace("mono", {
     fontWeight: "variable",
 });
 
-globalFontFace("line", [
+globalFontFace("pretendard", [
     {
-        src: `url('/font/LINESeedKR-Th.woff2') format('woff2')`,
-        fontWeight: "100",
-    },
-    {
-        src: `url('/font/LINESeedKR-Rg.woff2') format('woff2')`,
-        fontWeight: "400",
-    },
-    {
-        src: `url('/font/LINESeedKR-Bd.woff2') format('woff2')`,
-        fontWeight: "900",
+        src: `url('/font/PretendardVariable.woff2') format('woff2')`,
+        fontWeight: "variable",
     },
 ]);
 
@@ -24,7 +16,8 @@ export const font = {
     coding: style({
         fontFamily: "mono",
     }),
-    line: style({
-        fontFamily: "line, serif",
+
+    pretendard: style({
+        fontFamily: "pretendard",
     }),
 };
